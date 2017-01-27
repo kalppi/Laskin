@@ -16,7 +16,9 @@
  */
 package com.jarnoluu.laskin.logiikka;
 
+import java.util.Arrays;
 import java.util.List;
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,7 +31,7 @@ import static org.junit.Assert.*;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class ParserTest {
-    private Parser parser;
+    private final Parser parser;
     
     public ParserTest() {
         parser = new Parser();
@@ -52,18 +54,65 @@ public class ParserTest {
     }
     
     @Test(expected=LaskinParseException.class)
-    public void wrongNumberOfBrackets() throws Exception {
+    public void testWrongNumberOfBrackets() throws Exception {
         this.parser.tokenize("1+2*(4+4))");
     }
     
     @Test(expected=LaskinParseException.class)
-    public void wrongOrderOfBrackets() throws Exception {
+    public void testWrongOrderOfBrackets() throws Exception {
         this.parser.tokenize("1+2*)4+4(");
     }
     
     @Test
-    public void rightNumberOfTokens() throws Exception {
+    public void testRightNumberOfTokens() throws Exception {
         List<Token> tokens = parser.tokenize("1 *  2+   4/5+(6 - 7)");
         assertEquals(tokens.size(), 13);
+    }
+    
+    @Test(expected=LaskinParseException.class)
+    public void testUnknownCharacters() throws Exception {
+        this.parser.tokenize("1+2+_34");
+    }
+    
+    @Test(expected=LaskinParseException.class)
+    public void testUnknownCharacters2() throws Exception {
+        this.parser.tokenize("1+2'+34");
+    }
+    
+    @Test
+    public void testWhitespace() throws Exception {
+        this.parser.tokenize("1   +  2      * 4");
+    }
+    
+    @Test
+    public void testTokenize() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(TokenType.NUMBER, "1"),
+                new Token(TokenType.OPER, "+"),
+                new Token(TokenType.NUMBER, "2"),
+                new Token(TokenType.OPER, "*"),
+                new Token(TokenType.NUMBER, "3")
+        );
+        
+        List<Token> tokens = this.parser.tokenize("1+2*3");
+        
+        assertThat(tokens, is(expected));
+    }
+    
+    @Test
+    public void testTokenize2() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(TokenType.NUMBER, "3"),
+                new Token(TokenType.OPER, "^"),
+                new Token(TokenType.BRACKET_START),
+                new Token(TokenType.NUMBER, "2"),
+                new Token(TokenType.OPER, "+"),
+                new Token(TokenType.NUMBER, "3"),
+                new Token(TokenType.BRACKET_END)
+        );
+        
+        List<Token> tokens = this.parser.tokenize("3^(2+3)");
+        
+        assertThat(tokens, is(expected));
     }
 }
