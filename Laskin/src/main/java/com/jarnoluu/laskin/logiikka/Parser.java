@@ -35,6 +35,7 @@ public class Parser {
             case '-':
             case '*':
             case '/':
+            case '^':
                 return true;
             default:
                 return false;
@@ -62,7 +63,13 @@ public class Parser {
         }
     }
     
+    private String removeWhiteSpace(String input) {
+        return input.replaceAll("\\s","");
+    }
+    
     public List<Token> tokenize(String input) throws LaskinParseException {
+        input = this.removeWhiteSpace(input);
+        
         this.validBrackets(input);
         
         List<Token> tokens = new ArrayList();
@@ -92,6 +99,8 @@ public class Parser {
                 tokens.add(new Token(TokenType.BRACKET_START));
             }  else if(c == ')') {
                 tokens.add(new Token(TokenType.BRACKET_END));
+            } else {
+                throw new LaskinParseException("Unknown character (" + c + ")");
             }
         }
         

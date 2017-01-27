@@ -16,6 +16,7 @@
  */
 package com.jarnoluu.laskin;
 
+import com.jarnoluu.laskin.logiikka.Calculator;
 import com.jarnoluu.laskin.logiikka.Parser;
 import com.jarnoluu.laskin.logiikka.Token;
 import java.util.List;
@@ -27,13 +28,22 @@ import java.util.List;
 public class Laskin {
     public static void main(String[] args) {
         Parser p = new Parser();
+        Calculator c = new Calculator();
         
         try {
-            List<Token> tokens = p.tokenize("123+456*(7-8)");
+            List<Token> tokens = p.tokenize("3^(2+3)");
 
-            for(Token t : tokens) {
+            tokens.stream().forEach((t) -> {
                 System.out.println(t);
-            }
+            });
+            
+            System.out.println("");
+            
+            List<Token> postfix = c.infixToPostfix(tokens);
+            
+            postfix.stream().forEach((t) -> {
+                System.out.println(t);
+            });
         } catch(Exception e) {
             e.printStackTrace();
         }

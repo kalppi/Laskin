@@ -49,4 +49,15 @@ public class Token {
             return this.type.toString();
         }
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if(o == null) {
+            return false;
+        }
+        
+        Token t = (Token)o;
+        
+        return this.type == t.type && (this.data == null || this.data.equals(t.data));
+    }
 }
