@@ -36,7 +36,7 @@ public class Calculator {
     }
     
     private int getOpPrecedence(String op) {
-        switch(op) {
+        switch (op) {
             case "+":
             case "-":
                 return 2;
@@ -51,33 +51,36 @@ public class Calculator {
     }
     
     private Associativity getOpAssociativity(String op) {
-        if(op.equals("^")) return Associativity.RIGHT;
-        else return Associativity.LEFT;
+        if (op.equals("^")) {
+            return Associativity.RIGHT;
+        } else {
+            return Associativity.LEFT;
+        }
     }
     
     public List<Token> infixToPostfix(List<Token> infix) {
         List<Token> output = new ArrayList();
         Stack<Token> stack = new Stack();
         
-        while(infix.size() > 0) {
+        while (infix.size() > 0) {
             Token t = infix.remove(0);
             
-            switch(t.getType()) {
+            switch (t.getType()) {
                 case NUMBER:
                     output.add(t);
                     break;
                 case OPER:
-                    while(stack.size() > 0 && stack.peek().getType() == TokenType.OPER) {
+                    while (stack.size() > 0 && stack.peek().getType() == TokenType.OPER) {
                         Token t2 = stack.peek();
                         
-                        if(this.getOpAssociativity(t.getData()) == Associativity.LEFT) {
-                            if(this.getOpPrecedence(t.getData()) <= this.getOpPrecedence(t2.getData())) {
+                        if (this.getOpAssociativity(t.getData()) == Associativity.LEFT) {
+                            if (this.getOpPrecedence(t.getData()) <= this.getOpPrecedence(t2.getData())) {
                                 output.add(stack.pop());
                             } else {
                                 break;
                             }
                         } else {
-                            if(this.getOpPrecedence(t.getData()) < this.getOpPrecedence(t2.getData())) {
+                            if (this.getOpPrecedence(t.getData()) < this.getOpPrecedence(t2.getData())) {
                                 output.add(stack.pop());
                             } else {
                                 break;
@@ -91,7 +94,7 @@ public class Calculator {
                     stack.add(t);
                     break;
                 case BRACKET_END:
-                    while(stack.peek().getType() != TokenType.BRACKET_START) {
+                    while (stack.peek().getType() != TokenType.BRACKET_START) {
                         output.add(stack.pop());
                     }
                     
@@ -101,7 +104,7 @@ public class Calculator {
             }
         }
         
-        while(stack.size() > 0) {
+        while (stack.size() > 0) {
             output.add(stack.pop());
         }
         

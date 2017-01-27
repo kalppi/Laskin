@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
     <action>
+    <actionName>CUSTOM-checkstyle</actionName>
+    <displayName>Checkstyle</displayName>
+    <goals>
+      <goal>jxr:jxr</goal>
+      <goal>checkstyle:checkstyle</goal>
+    </goals>
+  </action>
+    <action>
         <actionName>CUSTOM-pit</actionName>
         <displayName>pit</displayName>
         <goals>

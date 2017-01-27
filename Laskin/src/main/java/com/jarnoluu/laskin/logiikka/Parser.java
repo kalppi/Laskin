@@ -18,7 +18,6 @@ package com.jarnoluu.laskin.logiikka;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  *
@@ -30,7 +29,7 @@ public class Parser {
     }
     
     private boolean isOper(char c) {
-        switch(c) {
+        switch (c) {
             case '+':
             case '-':
             case '*':
@@ -45,12 +44,12 @@ public class Parser {
     private void validBrackets(String input) throws LaskinParseException {
         int brackets = 0;
         
-        for(int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
-            if(c == '(') {
+            if (c == '(') {
                 brackets++;
-            } else if(c == ')') {
-                if(brackets == 0) {
+            } else if (c == ')') {
+                if (brackets == 0) {
                     throw new LaskinParseException("Wrong number or order of brackets");
                 }
                 
@@ -58,13 +57,13 @@ public class Parser {
             }
         }
         
-        if(brackets != 0) {
+        if (brackets != 0) {
             throw new LaskinParseException("Wrong number or order of brackets");
         }
     }
     
     private String removeWhiteSpace(String input) {
-        return input.replaceAll("\\s","");
+        return input.replaceAll("\\s", "");
     }
     
     public List<Token> tokenize(String input) throws LaskinParseException {
@@ -74,17 +73,17 @@ public class Parser {
         
         List<Token> tokens = new ArrayList();
         
-        for(int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             
-            if(this.isDigit(c)) {
+            if (this.isDigit(c)) {
                 String number = String.valueOf(c);
                 
-                while(i < input.length() - 1) {
+                while (i < input.length() - 1) {
                     i++;
                     c = input.charAt(i);
                     
-                    if(this.isDigit(c)) {
+                    if (this.isDigit(c)) {
                         number += c;
                     } else {
                         i--;
@@ -93,11 +92,11 @@ public class Parser {
                 }
                
                 tokens.add(new Token(TokenType.NUMBER, number));
-            } else if(this.isOper(c)) {
+            } else if (this.isOper(c)) {
                 tokens.add(new Token(TokenType.OPER, String.valueOf(c)));
-            } else if(c == '(') {
+            } else if (c == '(') {
                 tokens.add(new Token(TokenType.BRACKET_START));
-            }  else if(c == ')') {
+            }  else if (c == ')') {
                 tokens.add(new Token(TokenType.BRACKET_END));
             } else {
                 throw new LaskinParseException("Unknown character (" + c + ")");

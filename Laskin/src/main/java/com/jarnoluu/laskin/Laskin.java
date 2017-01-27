@@ -44,7 +44,7 @@ public class Laskin {
             postfix.stream().forEach((t) -> {
                 System.out.println(t);
             });
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

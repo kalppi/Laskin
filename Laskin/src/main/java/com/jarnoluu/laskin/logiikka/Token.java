@@ -43,7 +43,7 @@ public class Token {
     
     @Override
     public String toString() {
-        if(this.data != null) {
+        if (this.data != null) {
             return this.type.toString() + "(" + this.data + ")";
         } else {
             return this.type.toString();
@@ -52,11 +52,11 @@ public class Token {
     
     @Override
     public boolean equals(Object o) {
-        if(o == null) {
+        if (o == null) {
             return false;
         }
         
-        Token t = (Token)o;
+        Token t = (Token) o;
         
         return this.type == t.type && (this.data == null || this.data.equals(t.data));
     }
