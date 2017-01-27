@@ -14,28 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.jarnoluu.laskin;
-
-import com.jarnoluu.laskin.logiikka.Parser;
-import com.jarnoluu.laskin.logiikka.Token;
-import java.util.List;
+package com.jarnoluu.laskin.logiikka;
 
 /**
  *
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
-public class Laskin {
-    public static void main(String[] args) {
-        Parser p = new Parser();
-        
-        try {
-            List<Token> tokens = p.tokenize("123+456*(7-8)");
-
-            for(Token t : tokens) {
-                System.out.println(t);
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+public class LaskinParseException extends Exception {
+    public LaskinParseException(String message) {
+        super(message);
     }
 }
