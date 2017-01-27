@@ -41,7 +41,7 @@ public class Parser {
         }
     }
     
-    private void isValid(String input) throws LaskinParseException {
+    private void validBrackets(String input) throws LaskinParseException {
         int brackets = 0;
         
         for(int i = 0; i < input.length(); i++) {
@@ -63,7 +63,7 @@ public class Parser {
     }
     
     public List<Token> tokenize(String input) throws LaskinParseException {
-        this.isValid(input);
+        this.validBrackets(input);
         
         List<Token> tokens = new ArrayList();
         
