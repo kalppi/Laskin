@@ -4,3 +4,4 @@
 
 **Käyttäjät:** Kaikki laskinta tarvitsevat
 
+![Luokkakaavio](luokkakaavio.png)
