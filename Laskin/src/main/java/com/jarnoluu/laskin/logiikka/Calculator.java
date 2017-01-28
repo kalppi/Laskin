@@ -16,23 +16,33 @@
  */
 package com.jarnoluu.laskin.logiikka;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
+import java.util.function.Function;
 
 /**
  *
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Calculator {
+    private Map<String, Function<Stack<Double>, Double>> functions = new HashMap();
+    
     private enum Associativity {
         LEFT, RIGHT
     }
     
-    private Parser parser;
+    private final Parser parser;
     
     public Calculator() {
         this.parser = new Parser();
+        
+        this.functions.put("+", (Stack<Double> stack) -> {
+            return stack.pop() + stack.pop();
+        });
     }
     
     private int getOpPrecedence(String op) {
@@ -57,6 +67,14 @@ public class Calculator {
             return Associativity.LEFT;
         }
     }
+    
+    /**
+     * Converts tokenized calculation from infix notation to
+     * postfix (reverse polish) notation using Shunting-yard algorithm.
+     * 
+     * @param infix Tokens in infix notation
+     * @return List<Token> Tokens in poistfix notation
+     */
     
     public List<Token> infixToPostfix(List<Token> infix) {
         List<Token> output = new ArrayList();
@@ -111,10 +129,41 @@ public class Calculator {
         return output;
     }
     
-    public double calculate(String input) throws LaskinParseException {
+    public double calculate(String input) throws LaskinParseException, LaskinCalculationException {
         List<Token> tokens = this.parser.tokenize(input);
         
+        tokens = this.infixToPostfix(tokens);
         
-        return 0;
+        Stack<Double> stack = new Stack();
+        List<Double> args = new ArrayList();
+        
+        double val = 0;
+        
+        while (tokens.size() > 0) {
+            Token t = tokens.remove(0);
+            
+            if (t.getType() == TokenType.NUMBER) {
+                stack.add(Double.parseDouble(t.getData()));
+            } else if (t.getType() == TokenType.OPER) {
+                Function<Stack<Double>, Double> f = this.functions.get(t.getData());
+                
+                if(f == null) {
+                    throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
+                }
+                
+                stack.push(f.apply(stack));
+            }
+        }
+        
+        if(stack.size() > 1) {
+            
+        }
+        
+        return stack.pop();
+    }
+    
+    public String formatValue(Double val) {
+        DecimalFormat decimalFormat = new DecimalFormat("0.#####");
+        return decimalFormat.format(val);
     }
 }

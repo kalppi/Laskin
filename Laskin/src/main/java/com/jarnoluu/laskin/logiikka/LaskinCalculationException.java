@@ -14,17 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.jarnoluu.laskin;
-
-import com.jarnoluu.laskin.ui.TextUI;
-import com.jarnoluu.laskin.ui.UIManager;
+package com.jarnoluu.laskin.logiikka;
 
 /**
  *
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
-public class Laskin {
-    public static void main(String[] args) {
-        UIManager.addUI(new TextUI());
+public class LaskinCalculationException extends Exception {
+    public LaskinCalculationException(String message) {
+        super(message);
     }
 }
