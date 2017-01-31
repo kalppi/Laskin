@@ -60,7 +60,7 @@ public class ScriptManager {
                 
                 Invocable inv = (Invocable) script.getEngine();
                 
-                for(Map.Entry e : bindings.entrySet()) {
+                bindings.entrySet().stream().forEach((e) -> {
                     Matcher m = this.pattern.matcher(e.getValue().toString());
                     m.find();
                     
@@ -69,7 +69,7 @@ public class ScriptManager {
                     this.functions.put((String)e.getKey(),
                         Pair.with(inv, argCount)
                     );
-                }
+                });
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -83,7 +83,6 @@ public class ScriptManager {
         
         try {
             Invocable inv = func.getValue0();
-            
             int argCount = func.getValue1();
             
             if(stack.size() < argCount) {
@@ -96,10 +95,10 @@ public class ScriptManager {
                 case 2:
                     return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast());
                 default:
-                    return 0.0;
+                    throw new LaskinCalculationException("Unknown error");
             }
         } catch (ScriptException | NoSuchMethodException e) {
-            return 0.0;
+            throw new LaskinCalculationException("Unknown error");
         }
     }
 }
