@@ -1,26 +1,10 @@
 package com.jarnoluu.laskin.logiikka;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
-import javax.script.Bindings;
-import javax.script.Compilable;
-import javax.script.CompiledScript;
-import javax.script.Invocable;
-import javax.script.ScriptContext;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import org.javatuples.Pair;
 
 /**
  *
@@ -66,7 +50,6 @@ public class Calculator {
         LinkedList<Double> args = new LinkedList();
         
         double val = 0;
-        
         Double a, b;
         
         while (tokens.size() > 0) {
@@ -93,7 +76,7 @@ public class Calculator {
                         throw new LaskinCalculationException("Unknown function (" + t.getData() + ")");
                     }
 
-                    switch(this.scriptManager.getFunctionArgCount(t.getData())) {
+                    switch (this.scriptManager.getFunctionArgCount(t.getData())) {
                         case 2:
                             stack.add(
                                  this.scriptManager.invokeFunction(t.getData(), stack.removeLast(), stack.removeLast())
