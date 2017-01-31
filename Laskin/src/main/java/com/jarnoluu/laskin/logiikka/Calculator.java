@@ -19,6 +19,7 @@ package com.jarnoluu.laskin.logiikka;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -29,7 +30,7 @@ import java.util.function.Function;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Calculator {
-    private Map<String, Function<Stack<Double>, Double>> functions = new HashMap();
+    private Map<String, Function<LinkedList<Double>, Double>> functions = new HashMap();
     
     private enum Associativity {
         LEFT, RIGHT
@@ -40,9 +41,38 @@ public class Calculator {
     public Calculator() {
         this.parser = new Parser();
         
-        this.functions.put("+", (Stack<Double> stack) -> {
-            return stack.pop() + stack.pop();
+        this.functions.put("+", (LinkedList<Double> args) -> {
+            return args.removeLast() + args.removeLast();
         });
+        
+        this.functions.put("-", (LinkedList<Double> args) -> {
+            double a = args.removeLast(),
+                    b = args.removeLast();
+            
+            return b - a;
+        });
+        
+        this.functions.put("*", (LinkedList<Double> args) -> {
+            return args.removeLast() * args.removeLast();
+        });
+        
+        this.functions.put("/", (LinkedList<Double> args) -> {
+            double a = args.removeLast(),
+                    b = args.removeLast();
+            
+            return b / a;
+        });
+        
+        this.functions.put("^", (LinkedList<Double> args) -> {
+            double a = args.removeLast(),
+                    b = args.removeLast();
+            
+            return Math.pow(b, a);
+        });
+    }
+    
+    public Parser getParser() {
+        return this.parser;
     }
     
     private int getOpPrecedence(String op) {
@@ -88,7 +118,7 @@ public class Calculator {
                     output.add(t);
                     break;
                 case OPER:
-                    while (stack.size() > 0 && stack.peek().getType() == TokenType.OPER) {
+                    while (stack.size() > 0 && stack.peek().getType() == Token.Type.OPER) {
                         Token t2 = stack.peek();
                         
                         if (this.getOpAssociativity(t.getData()) == Associativity.LEFT) {
@@ -112,7 +142,7 @@ public class Calculator {
                     stack.add(t);
                     break;
                 case BRACKET_END:
-                    while (stack.peek().getType() != TokenType.BRACKET_START) {
+                    while (stack.peek().getType() != Token.Type.BRACKET_START) {
                         output.add(stack.pop());
                     }
                     
@@ -129,37 +159,43 @@ public class Calculator {
         return output;
     }
     
+    private void debugList(List<Double> list) {
+        list.stream().forEach((t) -> {
+            System.out.println("#" + t);
+        });
+        System.out.println("");
+    }
+    
     public double calculate(String input) throws LaskinParseException, LaskinCalculationException {
         List<Token> tokens = this.parser.tokenize(input);
         
         tokens = this.infixToPostfix(tokens);
         
-        Stack<Double> stack = new Stack();
-        List<Double> args = new ArrayList();
+        LinkedList<Double> args = new LinkedList();
         
         double val = 0;
         
         while (tokens.size() > 0) {
             Token t = tokens.remove(0);
             
-            if (t.getType() == TokenType.NUMBER) {
-                stack.add(Double.parseDouble(t.getData()));
-            } else if (t.getType() == TokenType.OPER) {
-                Function<Stack<Double>, Double> f = this.functions.get(t.getData());
+            if (t.getType() == Token.Type.NUMBER) {
+                args.add(Double.parseDouble(t.getData()));
+            } else if (t.getType() == Token.Type.OPER) {
+                Function<LinkedList<Double>, Double> f = this.functions.get(t.getData());
                 
                 if(f == null) {
                     throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
                 }
                 
-                stack.push(f.apply(stack));
+                args.add(f.apply(args));
             }
         }
         
-        if(stack.size() > 1) {
+        if(args.size() > 1) {
             
         }
         
-        return stack.pop();
+        return args.get(0);
     }
     
     public String formatValue(Double val) {

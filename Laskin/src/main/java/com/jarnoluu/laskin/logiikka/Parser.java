@@ -91,13 +91,13 @@ public class Parser {
                     }
                 }
                
-                tokens.add(new Token(TokenType.NUMBER, number));
+                tokens.add(new Token(Token.Type.NUMBER, number));
             } else if (this.isOper(c)) {
-                tokens.add(new Token(TokenType.OPER, String.valueOf(c)));
+                tokens.add(new Token(Token.Type.OPER, String.valueOf(c)));
             } else if (c == '(') {
-                tokens.add(new Token(TokenType.BRACKET_START));
+                tokens.add(new Token(Token.Type.BRACKET_START));
             }  else if (c == ')') {
-                tokens.add(new Token(TokenType.BRACKET_END));
+                tokens.add(new Token(Token.Type.BRACKET_END));
             } else {
                 throw new LaskinParseException("Unknown character (" + c + ")");
             }

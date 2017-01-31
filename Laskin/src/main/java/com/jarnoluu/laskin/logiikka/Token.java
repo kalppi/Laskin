@@ -21,19 +21,27 @@ package com.jarnoluu.laskin.logiikka;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Token {
-    private TokenType type;
-    private String data;
-    
-    public Token(TokenType type) {
-        this.type = type;
+    public enum Type {
+        BRACKET_START,
+        BRACKET_END,
+        NUMBER,
+        OPER
     }
     
-    public Token(TokenType type, String data) {
+    private final Token.Type type;
+    private final String data;
+    
+    public Token(Token.Type type) {
+        this.type = type;
+        this.data = null;
+    }
+    
+    public Token(Token.Type type, String data) {
         this.type = type;
         this.data = data;
     }
 
-    public TokenType getType() {
+    public Token.Type getType() {
         return type;
     }
 
@@ -51,9 +59,22 @@ public class Token {
     }
     
     @Override
+    public int hashCode() {
+        int code = 53;
+        code = 31 * code + this.type.hashCode();
+        code = 31 * code + this.data.hashCode();
+        
+        return code;
+    }
+    
+    @Override
     public boolean equals(Object o) {
         if (o == null) {
             return false;
+        } else if (!(o instanceof Token)) {
+            return false;
+        } else if (o == this) {
+            return true;
         }
         
         Token t = (Token) o;

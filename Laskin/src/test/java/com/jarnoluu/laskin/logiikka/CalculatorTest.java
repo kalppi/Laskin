@@ -58,9 +58,9 @@ public class CalculatorTest {
     @Test
     public void testInfixToPostfix() {
         List<Token> expected = Arrays.asList(
-                new Token(TokenType.NUMBER, "12"),
-                new Token(TokenType.NUMBER, "10"),
-                new Token(TokenType.OPER, "+")
+                new Token(Token.Type.NUMBER, "12"),
+                new Token(Token.Type.NUMBER, "10"),
+                new Token(Token.Type.OPER, "+")
         );
         try {
             List<Token> tokens = this.parser.tokenize("12+10");
@@ -75,25 +75,60 @@ public class CalculatorTest {
     @Test
     public void testInfixToPostfix2() {
         List<Token> expected = Arrays.asList(
-                new Token(TokenType.NUMBER, "3"),
-                new Token(TokenType.NUMBER, "4"),
-                new Token(TokenType.NUMBER, "2"),
-                new Token(TokenType.OPER, "*"),
-                new Token(TokenType.NUMBER, "1"),
-                new Token(TokenType.NUMBER, "5"),
-                new Token(TokenType.OPER, "-"),
-                new Token(TokenType.NUMBER, "2"),
-                new Token(TokenType.NUMBER, "3"),
-                new Token(TokenType.OPER, "^"),
-                new Token(TokenType.OPER, "^"),
-                new Token(TokenType.OPER, "/"),
-                new Token(TokenType.OPER, "+")
+                new Token(Token.Type.NUMBER, "3"),
+                new Token(Token.Type.NUMBER, "4"),
+                new Token(Token.Type.NUMBER, "2"),
+                new Token(Token.Type.OPER, "*"),
+                new Token(Token.Type.NUMBER, "1"),
+                new Token(Token.Type.NUMBER, "5"),
+                new Token(Token.Type.OPER, "-"),
+                new Token(Token.Type.NUMBER, "2"),
+                new Token(Token.Type.NUMBER, "3"),
+                new Token(Token.Type.OPER, "^"),
+                new Token(Token.Type.OPER, "^"),
+                new Token(Token.Type.OPER, "/"),
+                new Token(Token.Type.OPER, "+")
         );
         try {
             List<Token> tokens = this.parser.tokenize("3+4*2/(1-5)^2^3");
             List<Token> postfix = this.calculator.infixToPostfix(tokens);
             
             assertThat(postfix, is(expected));
+        } catch(Exception e) {
+        
+        }
+    }
+    
+    @Test
+    public void testCalculation() {
+        try {
+            double val = this.calculator.calculate("5*15+2");
+            
+            System.out.println(val);
+            
+            assertEquals(77.0, val, 0.00001);
+        } catch(Exception e) {
+        
+        }
+    }
+    
+    @Test
+    public void testCalculation2() {
+        try {
+            double val = this.calculator.calculate("10+(2^10)");
+            
+            assertEquals(1034, val, 0.00001);
+        } catch(Exception e) {
+        
+        }
+    }
+    
+    @Test
+    public void testCalculation3() {
+        try {
+            double val = this.calculator.calculate("10+(2^10-4)");
+            
+            assertEquals(1030, val, 0.00001);
         } catch(Exception e) {
         
         }

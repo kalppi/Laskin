@@ -87,11 +87,11 @@ public class ParserTest {
     @Test
     public void testTokenize() throws Exception {
         List<Token> expected = Arrays.asList(
-                new Token(TokenType.NUMBER, "1"),
-                new Token(TokenType.OPER, "+"),
-                new Token(TokenType.NUMBER, "2"),
-                new Token(TokenType.OPER, "*"),
-                new Token(TokenType.NUMBER, "3")
+                new Token(Token.Type.NUMBER, "1"),
+                new Token(Token.Type.OPER, "+"),
+                new Token(Token.Type.NUMBER, "2"),
+                new Token(Token.Type.OPER, "*"),
+                new Token(Token.Type.NUMBER, "3")
         );
         
         List<Token> tokens = this.parser.tokenize("1+2*3");
@@ -102,13 +102,13 @@ public class ParserTest {
     @Test
     public void testTokenize2() throws Exception {
         List<Token> expected = Arrays.asList(
-                new Token(TokenType.NUMBER, "3"),
-                new Token(TokenType.OPER, "^"),
-                new Token(TokenType.BRACKET_START),
-                new Token(TokenType.NUMBER, "2"),
-                new Token(TokenType.OPER, "+"),
-                new Token(TokenType.NUMBER, "3"),
-                new Token(TokenType.BRACKET_END)
+                new Token(Token.Type.NUMBER, "3"),
+                new Token(Token.Type.OPER, "^"),
+                new Token(Token.Type.BRACKET_START),
+                new Token(Token.Type.NUMBER, "2"),
+                new Token(Token.Type.OPER, "+"),
+                new Token(Token.Type.NUMBER, "3"),
+                new Token(Token.Type.BRACKET_END)
         );
         
         List<Token> tokens = this.parser.tokenize("3^(2+3)");
