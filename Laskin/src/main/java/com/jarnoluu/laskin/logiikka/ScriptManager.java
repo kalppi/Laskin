@@ -26,12 +26,15 @@ public class ScriptManager {
     private final Map<String, Pair<Invocable, Integer>> functions;
     private final ScriptEngineManager factory;
     private final String language;
+    private final Pattern pattern;
             
     public ScriptManager(String language) {
         this.language = language;
         
         this.functions = new HashMap();
         this.factory = new ScriptEngineManager();
+        
+        this.pattern = Pattern.compile(".*function\\s+_?[a-zA-Z0-9]+\\((.*?)\\)\\s+\\{.*", Pattern.MULTILINE);
     }
     
     public boolean functionExists(String f) {
@@ -60,10 +63,8 @@ public class ScriptManager {
                 
                 Invocable inv = (Invocable) script.getEngine();
                 
-                Pattern p = Pattern.compile(".*function\\s+_?[a-zA-Z0-9]+\\((.*?)\\)\\s+\\{.*", Pattern.MULTILINE);
-                
                 for(Map.Entry e : bindings.entrySet()) {
-                    Matcher m = p.matcher(e.getValue().toString());
+                    Matcher m = this.pattern.matcher(e.getValue().toString());
                     m.find();
                     
                     int argCount = m.group(1).split(",").length;
