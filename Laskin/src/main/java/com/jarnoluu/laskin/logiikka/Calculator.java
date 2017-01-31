@@ -1,5 +1,7 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.exceptions.LaskinParseException;
+import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package com.jarnoluu.laskin.logiikka;
+package com.jarnoluu.laskin.exceptions;
 
 /**
  *

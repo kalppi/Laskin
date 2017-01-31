@@ -1,5 +1,6 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.exceptions.LaskinParseException;
 import java.util.ArrayList;
 import java.util.List;
 

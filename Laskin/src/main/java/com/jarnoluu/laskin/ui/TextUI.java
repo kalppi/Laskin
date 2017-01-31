@@ -1,8 +1,8 @@
 package com.jarnoluu.laskin.ui;
 
 import com.jarnoluu.laskin.logiikka.Calculator;
-import com.jarnoluu.laskin.logiikka.LaskinCalculationException;
-import com.jarnoluu.laskin.logiikka.LaskinParseException;
+import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
+import com.jarnoluu.laskin.exceptions.LaskinParseException;
 import com.jarnoluu.laskin.logiikka.Token;
 import java.util.List;
 import java.util.Scanner;

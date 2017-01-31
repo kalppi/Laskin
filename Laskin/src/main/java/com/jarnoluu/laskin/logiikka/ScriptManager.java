@@ -1,5 +1,6 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;

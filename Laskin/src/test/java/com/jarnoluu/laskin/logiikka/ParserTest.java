@@ -1,5 +1,6 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.exceptions.LaskinParseException;
 import java.util.Arrays;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.is;

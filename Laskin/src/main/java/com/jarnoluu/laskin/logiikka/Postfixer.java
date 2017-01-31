@@ -21,7 +21,7 @@ public class Postfixer {
         }
     }
     
-        private int getOpPrecedence(String op) {
+    private int getOpPrecedence(String op) {
         switch (op) {
             case "+":
             case "-":
