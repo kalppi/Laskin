@@ -23,15 +23,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import org.javatuples.Pair;
 
 /**
  *
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Calculator {
-    private Map<String, IFunction> functions = new HashMap();
+    private Map<String, Pair<Integer, IFunction>> functions = new HashMap();
     
     private enum Associativity {
         LEFT, RIGHT
@@ -42,40 +41,40 @@ public class Calculator {
     public Calculator() {
         this.parser = new Parser();
         
-        this.functions.put("+", (IFunction) (LinkedList<Double> args) -> {
+        this.functions.put("+", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
             Double a = args.removeLast();
             Double b = args.removeLast();
             
             return a + b;
-        });
+        }));
         
-        this.functions.put("-", (IFunction) (LinkedList<Double> args) -> {
+        this.functions.put("-", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
             Double a = args.removeLast();
             Double b = args.removeLast();
             
             return b - a;
-        });
+        }));
         
-        this.functions.put("*", (IFunction) (LinkedList<Double> args) -> {
+        this.functions.put("*", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
             Double a = args.removeLast();
             Double b = args.removeLast();
             
             return a * b;
-        });
+        }));
         
-        this.functions.put("/", (IFunction) (LinkedList<Double> args) -> {
+        this.functions.put("/", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
             Double a = args.removeLast();
             Double b = args.removeLast();
             
             return b / a;
-        });
+        }));
         
-        this.functions.put("^", (IFunction) (LinkedList<Double> args) -> {
+        this.functions.put("^", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
             Double a = args.removeLast();
             Double b = args.removeLast();
             
             return Math.pow(b, a);
-        });
+        }));
     }
     
     public Parser getParser() {
@@ -178,12 +177,12 @@ public class Calculator {
         
         tokens = this.infixToPostfix(tokens);
         
+        LinkedList<Double> stack = new LinkedList();
         LinkedList<Double> args = new LinkedList();
         
         double val = 0;
         
-        IFunction func;
-        
+        Pair<Integer, IFunction> func;
         Double a, b;
         
         while (tokens.size() > 0) {
@@ -191,7 +190,7 @@ public class Calculator {
             
             switch (t.getType()) {
                 case NUMBER:
-                    args.add(Double.parseDouble(t.getData()));
+                    stack.add(Double.parseDouble(t.getData()));
                     break;
                 case OPER:
                     func = this.functions.get(t.getData());
@@ -199,18 +198,29 @@ public class Calculator {
                     if(func == null) {
                         throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
                     }
-
-                    args.add(func.execute(args));
+                    
+                    args.clear();
+                    
+                    int argCount = func.getValue0();
+                    while(argCount-- > 0) {
+                        args.push(stack.removeLast());
+                    }
+                    
+                    stack.add(func.getValue1().execute(args));
+                    
+                    break;
+                case FUNC:
+                    
                     
                     break;
             }
         }
         
-        if(args.size() > 1) {
+        if(stack.size() > 1) {
             
         }
         
-        return args.get(0);
+        return stack.get(0);
     }
     
     public String formatValue(Double val) {
