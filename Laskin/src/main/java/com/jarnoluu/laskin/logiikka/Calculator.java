@@ -23,6 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
@@ -30,7 +31,7 @@ import java.util.function.Function;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Calculator {
-    private Map<String, Function<LinkedList<Double>, Double>> functions = new HashMap();
+    private Map<String, IFunction> functions = new HashMap();
     
     private enum Associativity {
         LEFT, RIGHT
@@ -41,31 +42,37 @@ public class Calculator {
     public Calculator() {
         this.parser = new Parser();
         
-        this.functions.put("+", (LinkedList<Double> args) -> {
-            return args.removeLast() + args.removeLast();
+        this.functions.put("+", (IFunction) (LinkedList<Double> args) -> {
+            Double a = args.removeLast();
+            Double b = args.removeLast();
+            
+            return a + b;
         });
         
-        this.functions.put("-", (LinkedList<Double> args) -> {
-            double a = args.removeLast(),
-                    b = args.removeLast();
+        this.functions.put("-", (IFunction) (LinkedList<Double> args) -> {
+            Double a = args.removeLast();
+            Double b = args.removeLast();
             
             return b - a;
         });
         
-        this.functions.put("*", (LinkedList<Double> args) -> {
-            return args.removeLast() * args.removeLast();
+        this.functions.put("*", (IFunction) (LinkedList<Double> args) -> {
+            Double a = args.removeLast();
+            Double b = args.removeLast();
+            
+            return a * b;
         });
         
-        this.functions.put("/", (LinkedList<Double> args) -> {
-            double a = args.removeLast(),
-                    b = args.removeLast();
+        this.functions.put("/", (IFunction) (LinkedList<Double> args) -> {
+            Double a = args.removeLast();
+            Double b = args.removeLast();
             
             return b / a;
         });
         
-        this.functions.put("^", (LinkedList<Double> args) -> {
-            double a = args.removeLast(),
-                    b = args.removeLast();
+        this.functions.put("^", (IFunction) (LinkedList<Double> args) -> {
+            Double a = args.removeLast();
+            Double b = args.removeLast();
             
             return Math.pow(b, a);
         });
@@ -175,19 +182,27 @@ public class Calculator {
         
         double val = 0;
         
+        IFunction func;
+        
+        Double a, b;
+        
         while (tokens.size() > 0) {
             Token t = tokens.remove(0);
             
-            if (t.getType() == Token.Type.NUMBER) {
-                args.add(Double.parseDouble(t.getData()));
-            } else if (t.getType() == Token.Type.OPER) {
-                Function<LinkedList<Double>, Double> f = this.functions.get(t.getData());
-                
-                if(f == null) {
-                    throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
-                }
-                
-                args.add(f.apply(args));
+            switch (t.getType()) {
+                case NUMBER:
+                    args.add(Double.parseDouble(t.getData()));
+                    break;
+                case OPER:
+                    func = this.functions.get(t.getData());
+
+                    if(func == null) {
+                        throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
+                    }
+
+                    args.add(func.execute(args));
+                    
+                    break;
             }
         }
         

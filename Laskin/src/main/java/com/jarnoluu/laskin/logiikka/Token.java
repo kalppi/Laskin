@@ -25,7 +25,8 @@ public class Token {
         BRACKET_START,
         BRACKET_END,
         NUMBER,
-        OPER
+        OPER,
+        FUNC
     }
     
     private final Token.Type type;
