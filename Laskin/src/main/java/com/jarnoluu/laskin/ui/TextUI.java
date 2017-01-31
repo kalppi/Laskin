@@ -49,7 +49,7 @@ public class TextUI implements UI {
                 case ".postfix":
                     try {
                         List<Token> tokens = c.getParser().tokenize(parts[1]);
-                        tokens = c.infixToPostfix(tokens);
+                        tokens = c.getPostfixer().infixToPostfix(tokens);
                         
                         tokens.stream().forEach((t) -> {
                             System.out.println(t);

@@ -21,22 +21,6 @@ public class ParserTest {
         parser = new Parser();
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-    
     @Test(expected=LaskinParseException.class)
     public void testWrongNumberOfBrackets() throws Exception {
         this.parser.tokenize("1+2*(4+4))");
