@@ -102,8 +102,8 @@ public class Calculator {
      * Converts tokenized calculation from infix notation to
      * postfix (reverse polish) notation using Shunting-yard algorithm.
      * 
-     * @param infix Tokens in infix notation
-     * @return List<Token> Tokens in poistfix notation
+     * @param infix List of tokens in infix notation
+     * @return List of tokens in postfix notation
      */
     
     public List<Token> infixToPostfix(List<Token> infix) {
