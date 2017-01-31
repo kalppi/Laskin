@@ -83,9 +83,9 @@ public class Parser {
                
                 tokens.add(new Token(Token.Type.NUMBER, number));
             } else if (this.isOper(c)) {
-                if(c == '-' &&
-                    this.isDigit(input.charAt(i+1)) &&
-                    (tokens.isEmpty() || input.charAt(i-1) == '(' || this.isOper(input.charAt(i-1)))) {
+                if (c == '-' &&
+                    this.isDigit(input.charAt(i + 1)) &&
+                    (tokens.isEmpty() || input.charAt(i - 1) == '(' || this.isOper(input.charAt(i - 1)))) {
                     
                     String number = String.valueOf(c);
                     
@@ -128,8 +128,6 @@ public class Parser {
                 i--;
                 
                 tokens.add(new Token(Token.Type.FUNC, str));
-            } else if (c == ' ' || c == '\t') {
-                
             } else {
                 throw new LaskinParseException("Unknown character (" + c + ")");
             }

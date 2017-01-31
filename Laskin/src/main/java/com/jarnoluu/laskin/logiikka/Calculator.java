@@ -153,7 +153,7 @@ public class Calculator {
                     
                     stack.pop();
                     
-                    if(stack.size() > 0 && stack.peek().getType() == Token.Type.FUNC) {
+                    if (stack.size() > 0 && stack.peek().getType() == Token.Type.FUNC) {
                         output.add(stack.pop());
                     }
                     
@@ -209,14 +209,14 @@ public class Calculator {
                 case FUNC:
                     func = this.functions.get(t.getData());
 
-                    if(func == null) {
+                    if (func == null) {
                         throw new LaskinCalculationException("Unknown function (" + t.getData() + ")");
                     }
                     
                     args.clear();
                     
                     int argCount = func.getValue0();
-                    while(argCount-- > 0) {
+                    while (argCount-- > 0) {
                         args.push(stack.removeLast());
                     }
                     
@@ -226,7 +226,7 @@ public class Calculator {
             }
         }
         
-        if(stack.size() > 1) {
+        if (stack.size() > 1) {
             throw new LaskinCalculationException("Error");
         }
         

@@ -138,4 +138,11 @@ public class ParserTest {
         
         assertThat(tokens, is(expected));
     }
+    
+    @Test
+    public void testMalformedCalculations() throws LaskinParseException {
+        this.parser.tokenize("+232-2/");
+        this.parser.tokenize("%32+()");
+        this.parser.tokenize("()-22+(43%)");
+    }
 }
