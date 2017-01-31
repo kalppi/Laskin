@@ -75,6 +75,13 @@ public class Calculator {
             
             return Math.pow(b, a);
         }));
+        
+        this.functions.put("max", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
+            Double a = args.removeLast();
+            Double b = args.removeLast();
+            
+            return Math.max(a, b);
+        }));
     }
     
     public Parser getParser() {
@@ -154,7 +161,21 @@ public class Calculator {
                     
                     stack.pop();
                     
+                    if(stack.peek().getType() == Token.Type.FUNC) {
+                        output.add(stack.pop());
+                    }
+                    
                     break;
+                case FUNC:
+                    stack.add(t);
+                    break;
+                case COMMA:
+                    while (stack.peek().getType() != Token.Type.BRACKET_START) {
+                        output.add(stack.pop());
+                    }
+                    
+                    break;
+                
             }
         }
         
@@ -165,7 +186,7 @@ public class Calculator {
         return output;
     }
     
-    private void debugList(List<Double> list) {
+    private <T> void debugList(List<T> list) {
         list.stream().forEach((t) -> {
             System.out.println("#" + t);
         });
@@ -193,10 +214,11 @@ public class Calculator {
                     stack.add(Double.parseDouble(t.getData()));
                     break;
                 case OPER:
+                case FUNC:
                     func = this.functions.get(t.getData());
 
                     if(func == null) {
-                        throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
+                        throw new LaskinCalculationException("Unknown function (" + t.getData() + ")");
                     }
                     
                     args.clear();
@@ -207,10 +229,6 @@ public class Calculator {
                     }
                     
                     stack.add(func.getValue1().execute(args));
-                    
-                    break;
-                case FUNC:
-                    
                     
                     break;
             }

@@ -110,6 +110,11 @@ public class Parser {
                 while (this.isLetter(c)) {
                     str += c;
                     i++;
+                    
+                    if (i == input.length()) {
+                        break;
+                    }
+                    
                     c = input.charAt(i);
                 }
                 

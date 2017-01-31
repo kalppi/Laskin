@@ -44,7 +44,7 @@ public class TextUI implements UI {
         while (ok) {
             System.out.print("> ");
             String line = s.nextLine();
-            String[] parts = line.split(" ");
+            String[] parts = line.split(" ", 2);
             
             switch (parts[0]) {
                 case ".exit":
