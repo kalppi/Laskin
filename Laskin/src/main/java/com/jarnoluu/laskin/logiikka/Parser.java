@@ -81,7 +81,7 @@ public class Parser {
                         break;
                     }
                 }
-               
+                
                 tokens.add(new Token(Token.Type.NUMBER, number));
             } else if (this.isOper(c)) {
                 if (c == '-' &&

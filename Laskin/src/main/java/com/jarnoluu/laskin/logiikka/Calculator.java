@@ -13,7 +13,7 @@ import java.util.Map;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Calculator {
-    private Map<String, String> operators = new HashMap();
+    private final Map<String, String> operators = new HashMap();
     private final ScriptManager scriptManager;
     
     private final Parser parser;
@@ -49,11 +49,7 @@ public class Calculator {
         tokens = this.postfixer.infixToPostfix(tokens);
         
         LinkedList<Double> stack = new LinkedList();
-        LinkedList<Double> args = new LinkedList();
-        
-        double val = 0;
-        Double a, b;
-        
+                
         while (tokens.size() > 0) {
             Token t = tokens.remove(0);
             

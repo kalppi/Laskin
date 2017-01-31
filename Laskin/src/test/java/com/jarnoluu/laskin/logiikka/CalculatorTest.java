@@ -17,9 +17,7 @@ public class CalculatorTest {
     @Test
     public void testCalculation() throws Exception {
         double val = this.calculator.calculate("5*15+2");
-
-        System.out.println(val);
-
+        
         assertEquals(77.0, val, 0.00001);
     }
     

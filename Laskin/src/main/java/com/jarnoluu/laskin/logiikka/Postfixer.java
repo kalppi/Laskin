@@ -9,7 +9,7 @@ import java.util.Stack;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Postfixer {
-   private enum Associativity {
+    private enum Associativity {
         LEFT, RIGHT
     }
         
