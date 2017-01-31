@@ -28,6 +28,10 @@ public class Parser {
         return Character.isDigit(c);
     }
     
+    private boolean isLetter(char c) {
+        return Character.isLetter(c);
+    }
+    
     private boolean isOper(char c) {
         switch (c) {
             case '+':
@@ -98,6 +102,20 @@ public class Parser {
                 tokens.add(new Token(Token.Type.BRACKET_START));
             }  else if (c == ')') {
                 tokens.add(new Token(Token.Type.BRACKET_END));
+            } else if (c == ',') {
+                tokens.add(new Token(Token.Type.COMMA));
+            } else if (this.isLetter(c)) {
+                String str = "";
+                
+                while (this.isLetter(c)) {
+                    str += c;
+                    i++;
+                    c = input.charAt(i);
+                }
+                
+                i--;
+                
+                tokens.add(new Token(Token.Type.FUNC, str));
             } else {
                 throw new LaskinParseException("Unknown character (" + c + ")");
             }

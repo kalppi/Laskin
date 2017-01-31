@@ -24,6 +24,7 @@ public class Token {
     public enum Type {
         BRACKET_START,
         BRACKET_END,
+        COMMA,
         NUMBER,
         OPER,
         FUNC
