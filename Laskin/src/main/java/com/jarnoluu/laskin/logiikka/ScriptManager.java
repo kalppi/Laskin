@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -39,10 +40,6 @@ public class ScriptManager {
     
     public boolean functionExists(String f) {
         return this.functions.containsKey(f);
-    }
-    
-    public int getFunctionArgCount(String f) {
-        return this.functions.get(f).getValue1();
     }
     
     public void loadScript(String file) {
@@ -81,15 +78,26 @@ public class ScriptManager {
         }
     }
     
-    public Double invokeFunction(String f, Double v) {
-        return 0.0;
-    }
-    
-    public Double invokeFunction(String f, Double a, Double b) {
+    public Double invokeFunction(String f, LinkedList<Double> stack) throws LaskinCalculationException {
         Pair<Invocable, Integer> func = this.functions.get(f);
         
         try {
-            return (Double)func.getValue0().invokeFunction(f, b, a);
+            Invocable inv = func.getValue0();
+            
+            int argCount = func.getValue1();
+            
+            if(stack.size() < argCount) {
+                throw new LaskinCalculationException("Not enough arguments for function (" + f + ")");
+            }
+            
+            switch(argCount) {
+                case 1:
+                    return (Double)inv.invokeFunction(f, stack.removeLast());
+                case 2:
+                    return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast());
+                default:
+                    return 0.0;
+            }
         } catch (ScriptException | NoSuchMethodException e) {
             return 0.0;
         }

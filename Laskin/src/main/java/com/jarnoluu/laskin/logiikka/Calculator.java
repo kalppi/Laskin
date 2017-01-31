@@ -67,7 +67,7 @@ public class Calculator {
                     }
                     
                     stack.add(
-                        this.scriptManager.invokeFunction(func, stack.removeLast(), stack.removeLast())
+                        this.scriptManager.invokeFunction(func, stack)
                     );
                     
                     break;
@@ -75,13 +75,10 @@ public class Calculator {
                     if(!this.scriptManager.functionExists(t.getData())) {
                         throw new LaskinCalculationException("Unknown function (" + t.getData() + ")");
                     }
-
-                    switch (this.scriptManager.getFunctionArgCount(t.getData())) {
-                        case 2:
-                            stack.add(
-                                 this.scriptManager.invokeFunction(t.getData(), stack.removeLast(), stack.removeLast())
-                            );
-                    }
+                    
+                    stack.add(
+                         this.scriptManager.invokeFunction(t.getData(), stack)
+                    );
                     
                     break;
             }
