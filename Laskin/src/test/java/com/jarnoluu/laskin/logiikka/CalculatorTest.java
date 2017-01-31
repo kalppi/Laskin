@@ -100,37 +100,25 @@ public class CalculatorTest {
     }
     
     @Test
-    public void testCalculation() {
-        try {
-            double val = this.calculator.calculate("5*15+2");
-            
-            System.out.println(val);
-            
-            assertEquals(77.0, val, 0.00001);
-        } catch(Exception e) {
-        
-        }
+    public void testCalculation() throws Exception {
+        double val = this.calculator.calculate("5*15+2");
+
+        System.out.println(val);
+
+        assertEquals(77.0, val, 0.00001);
     }
     
     @Test
-    public void testCalculation2() {
-        try {
-            double val = this.calculator.calculate("10+(2^10)");
-            
-            assertEquals(1034, val, 0.00001);
-        } catch(Exception e) {
-        
-        }
+    public void testCalculation2() throws Exception {
+        double val = this.calculator.calculate("10+(2^10)-2");
+
+        assertEquals(1032, val, 0.00001);
     }
     
     @Test
-    public void testCalculation3() {
-        try {
-            double val = this.calculator.calculate("10+(2^10-4)");
-            
-            assertEquals(1030, val, 0.00001);
-        } catch(Exception e) {
-        
-        }
+    public void testCalculation3() throws Exception {
+        double val = this.calculator.calculate("10+(2^10-4)");
+
+        assertEquals(1030, val, 0.00001);
     }
 }
