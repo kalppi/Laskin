@@ -60,6 +60,13 @@ public class Calculator {
             return Math.pow(b, a);
         }));
         
+        this.functions.put("%", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
+            Double a = args.removeLast();
+            Double b = args.removeLast();
+            
+            return b % a;
+        }));
+        
         this.functions.put("max", Pair.with(2, (IFunction) (LinkedList<Double> args) -> {
             Double a = args.removeLast();
             Double b = args.removeLast();
@@ -79,6 +86,7 @@ public class Calculator {
                 return 2;
             case "*":
             case "/":
+            case "%":
                 return 3;
             case "^":
                 return 4;

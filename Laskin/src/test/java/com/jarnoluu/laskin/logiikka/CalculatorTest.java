@@ -132,4 +132,11 @@ public class CalculatorTest {
 
         assertEquals(1, val, 0.00001);
     }
+    
+    @Test
+    public void testCalculation6() throws Exception {
+        double val = this.calculator.calculate("11%3+2");
+
+        assertEquals(4, val, 0.00001);
+    }
 }
