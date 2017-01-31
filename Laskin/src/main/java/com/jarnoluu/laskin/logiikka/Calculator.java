@@ -161,7 +161,7 @@ public class Calculator {
                     
                     stack.pop();
                     
-                    if(stack.peek().getType() == Token.Type.FUNC) {
+                    if(stack.size() > 0 && stack.peek().getType() == Token.Type.FUNC) {
                         output.add(stack.pop());
                     }
                     
@@ -235,7 +235,7 @@ public class Calculator {
         }
         
         if(stack.size() > 1) {
-            
+            throw new LaskinCalculationException("Error");
         }
         
         return stack.get(0);

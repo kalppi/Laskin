@@ -69,6 +69,7 @@ public class Parser {
     private String removeWhiteSpace(String input) {
         return input.replaceAll("\\s", "");
     }
+
     
     public List<Token> tokenize(String input) throws LaskinParseException {
         input = this.removeWhiteSpace(input);
@@ -97,7 +98,28 @@ public class Parser {
                
                 tokens.add(new Token(Token.Type.NUMBER, number));
             } else if (this.isOper(c)) {
-                tokens.add(new Token(Token.Type.OPER, String.valueOf(c)));
+                if(c == '-' &&
+                    this.isDigit(input.charAt(i+1)) &&
+                    (tokens.isEmpty() || input.charAt(i-1) == '(' || this.isOper(input.charAt(i-1)))) {
+                    
+                    String number = String.valueOf(c);
+                    
+                    while (i < input.length() - 1) {
+                        i++;
+                        c = input.charAt(i);
+
+                        if (this.isDigit(c)) {
+                            number += c;
+                        } else {
+                            i--;
+                            break;
+                        }
+                    }
+                    
+                    tokens.add(new Token(Token.Type.NUMBER, number));
+                } else {
+                    tokens.add(new Token(Token.Type.OPER, String.valueOf(c)));
+                }
             } else if (c == '(') {
                 tokens.add(new Token(Token.Type.BRACKET_START));
             }  else if (c == ')') {
@@ -121,6 +143,8 @@ public class Parser {
                 i--;
                 
                 tokens.add(new Token(Token.Type.FUNC, str));
+            } else if (c == ' ' || c == '\t') {
+                
             } else {
                 throw new LaskinParseException("Unknown character (" + c + ")");
             }

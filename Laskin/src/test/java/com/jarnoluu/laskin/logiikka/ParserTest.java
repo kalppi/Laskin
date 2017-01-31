@@ -135,4 +135,23 @@ public class ParserTest {
         
         assertThat(tokens, is(expected));
     }
+    
+    @Test
+    public void testTokenize4() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(Token.Type.NUMBER, "-2"),
+                new Token(Token.Type.OPER, "+"),
+                new Token(Token.Type.BRACKET_START),
+                new Token(Token.Type.NUMBER, "-3"),
+                new Token(Token.Type.OPER, "-"),
+                new Token(Token.Type.NUMBER, "4"),
+                new Token(Token.Type.BRACKET_END),
+                new Token(Token.Type.OPER, "-"),
+                new Token(Token.Type.NUMBER, "5")
+        );
+        
+        List<Token> tokens = this.parser.tokenize("-2+(-3-4)-5");
+        
+        assertThat(tokens, is(expected));
+    }
 }

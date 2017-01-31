@@ -141,4 +141,11 @@ public class CalculatorTest {
 
         assertEquals(5, val, 0.00001);
     }
+    
+    @Test
+    public void testCalculation5() throws Exception {
+        double val = this.calculator.calculate(" 1+(2+   -2)");
+
+        assertEquals(1, val, 0.00001);
+    }
 }
