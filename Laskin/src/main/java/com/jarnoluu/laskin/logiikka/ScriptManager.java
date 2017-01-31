@@ -95,6 +95,10 @@ public class ScriptManager {
                     return (Double)inv.invokeFunction(f, stack.removeLast());
                 case 2:
                     return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast());
+                case 3:
+                    return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast(), stack.removeLast());
+                case 4:
+                    return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast(), stack.removeLast(), stack.removeLast());
                 default:
                     throw new LaskinCalculationException("Unknown error");
             }
