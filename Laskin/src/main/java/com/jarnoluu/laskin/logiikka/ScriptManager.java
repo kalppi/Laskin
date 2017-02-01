@@ -70,7 +70,7 @@ public class ScriptManager {
                     
                     int argCount = m.group(1).split(",").length;
                     
-                    this.functions.put((String)e.getKey(),
+                    this.functions.put((String) e.getKey(),
                         Pair.with(inv, argCount)
                     );
                 });
@@ -89,19 +89,19 @@ public class ScriptManager {
             Invocable inv = func.getValue0();
             int argCount = func.getValue1();
             
-            if(stack.size() < argCount) {
+            if (stack.size() < argCount) {
                 throw new LaskinCalculationException("Not enough arguments for function (" + f + ")");
             }
             
-            switch(argCount) {
+            switch (argCount) {
                 case 1:
-                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 1));
+                    return (Double) inv.invokeFunction(f, stack.remove(stack.size() - 1));
                 case 2:
-                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
+                    return (Double) inv.invokeFunction(f, stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
                 case 3:
-                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 3), stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
+                    return (Double) inv.invokeFunction(f, stack.remove(stack.size() - 3), stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
                 case 4:
-                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 4), stack.remove(stack.size() - 3), stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
+                    return (Double) inv.invokeFunction(f, stack.remove(stack.size() - 4), stack.remove(stack.size() - 3), stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
                 default:
                     throw new LaskinCalculationException("Unknown error");
             }

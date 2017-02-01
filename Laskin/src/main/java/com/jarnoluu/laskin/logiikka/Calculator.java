@@ -60,7 +60,7 @@ public class Calculator {
                 case OPER:
                     String func = this.operators.get(t.getData());
                     
-                    if(func == null) {
+                    if (func == null) {
                         throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
                     }
                     
@@ -70,7 +70,7 @@ public class Calculator {
                     
                     break;
                 case FUNC:
-                    if(!this.scriptManager.functionExists(t.getData())) {
+                    if (!this.scriptManager.functionExists(t.getData())) {
                         throw new LaskinCalculationException("Unknown function (" + t.getData() + ")");
                     }
                     
