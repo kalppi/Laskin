@@ -17,6 +17,7 @@ public class TextUI implements UI {
         
         System.out.println("Input calculation");
         System.out.println("Commands:");
+        System.out.println("  <input>");
         System.out.println("  .exit");
         System.out.println("  .tokenize <input>");
         System.out.println("  .postfix <input>");
