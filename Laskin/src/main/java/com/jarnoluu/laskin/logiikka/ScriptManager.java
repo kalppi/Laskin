@@ -7,6 +7,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -81,7 +82,7 @@ public class ScriptManager {
         }
     }
     
-    public Double invokeFunction(String f, LinkedList<Double> stack) throws LaskinCalculationException {
+    public Double invokeFunction(String f, List<Double> stack) throws LaskinCalculationException {
         Pair<Invocable, Integer> func = this.functions.get(f);
         
         try {
@@ -94,13 +95,13 @@ public class ScriptManager {
             
             switch(argCount) {
                 case 1:
-                    return (Double)inv.invokeFunction(f, stack.removeLast());
+                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 1));
                 case 2:
-                    return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast());
+                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
                 case 3:
-                    return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast(), stack.removeLast());
+                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 3), stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
                 case 4:
-                    return (Double)inv.invokeFunction(f, stack.removeLast(), stack.removeLast(), stack.removeLast(), stack.removeLast());
+                    return (Double)inv.invokeFunction(f, stack.remove(stack.size() - 4), stack.remove(stack.size() - 3), stack.remove(stack.size() - 2), stack.remove(stack.size() - 1));
                 default:
                     throw new LaskinCalculationException("Unknown error");
             }
