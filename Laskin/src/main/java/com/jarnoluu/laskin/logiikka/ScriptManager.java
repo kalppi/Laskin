@@ -1,14 +1,15 @@
 package com.jarnoluu.laskin.logiikka;
 
 import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
+import com.jarnoluu.laskin.exceptions.LaskinScriptException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.script.Bindings;
@@ -31,6 +32,7 @@ public class ScriptManager {
     private final String language;
     private final String path;
     private final Pattern pattern;
+    private final static int MAX_FUNCTION_ARGS = 4;
             
     public ScriptManager(String language, String path) {
         this.language = language;
@@ -46,39 +48,47 @@ public class ScriptManager {
         return this.functions.containsKey(f);
     }
     
-    public void loadScript(String file) {
+    public void loadScript(String file) throws LaskinScriptException {
+        URL r = ScriptManager.class.getClassLoader().getResource(this.path + file);
+        
+        Reader reader = null;
         try {
-            URL r = ScriptManager.class.getClassLoader().getResource(this.path + file);
-            
-            try {
-                Reader reader = new InputStreamReader(r.openStream());
-                
-                ScriptEngine engine = this.factory.getEngineByName(this.language);
-                
-                Compilable compilingEngine = (Compilable) engine;
-                CompiledScript script = compilingEngine.compile(reader);
-                
-                Bindings bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
-                
-                script.eval(bindings);
-                
-                Invocable inv = (Invocable) script.getEngine();
-                
-                bindings.entrySet().stream().forEach((e) -> {
-                    Matcher m = this.pattern.matcher(e.getValue().toString());
-                    m.find();
+            reader = new InputStreamReader(r.openStream());
+        } catch (IOException e) {
+            throw new LaskinScriptException("Could not load script file (" + file + ")");
+        }
+
+        ScriptEngine engine = this.factory.getEngineByName(this.language);
+
+        Compilable compilingEngine = (Compilable) engine;
+
+        CompiledScript script = null;
+        Bindings bindings = null;
+
+        try {
+            script = compilingEngine.compile(reader);
+            bindings = engine.getBindings(ScriptContext.ENGINE_SCOPE);
                     
-                    int argCount = m.group(1).split(",").length;
-                    
-                    this.functions.put((String) e.getKey(),
-                        Pair.with(inv, argCount)
-                    );
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
+            script.eval(bindings);
+        } catch (ScriptException e) {
+            throw new LaskinScriptException("Could not load script file (" + file + ")");
+        }
+
+        Invocable inv = (Invocable) script.getEngine();
+        
+        for (Entry<String, Object> e : bindings.entrySet()) {
+            Matcher m = this.pattern.matcher(e.getValue().toString());
+            m.find();
+
+            int argCount = m.group(1).split(",").length;
+
+            if (argCount > ScriptManager.MAX_FUNCTION_ARGS) {
+                throw new LaskinScriptException("Invalid function \"" + e.getKey() + "\" (more than " + ScriptManager.MAX_FUNCTION_ARGS + " parameters)");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            this.functions.put((String) e.getKey(),
+                Pair.with(inv, argCount)
+            );
         }
     }
     
@@ -106,7 +116,7 @@ public class ScriptManager {
                     throw new LaskinCalculationException("Unknown error");
             }
         } catch (ScriptException | NoSuchMethodException e) {
-            throw new LaskinCalculationException("Unknown error");
+            throw new LaskinCalculationException("Failed to call function (" + f + ")");
         }
     }
 }

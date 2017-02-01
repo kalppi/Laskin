@@ -2,6 +2,7 @@ package com.jarnoluu.laskin.logiikka;
 
 import com.jarnoluu.laskin.exceptions.LaskinParseException;
 import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
+import com.jarnoluu.laskin.exceptions.LaskinScriptException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ public class Calculator {
     private final Parser parser;
     private final Postfixer postfixer;
     
-    public Calculator() {
+    public Calculator() throws LaskinScriptException {
         this.parser = new Parser();
         this.postfixer = new Postfixer();
         this.scriptManager = new ScriptManager("JavaScript", "js/");
@@ -64,9 +65,7 @@ public class Calculator {
                         throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
                     }
                     
-                    stack.add(
-                        this.scriptManager.invokeFunction(func, stack)
-                    );
+                    stack.add(this.scriptManager.invokeFunction(func, stack));
                     
                     break;
                 case FUNC:
@@ -74,9 +73,7 @@ public class Calculator {
                         throw new LaskinCalculationException("Unknown function (" + t.getData() + ")");
                     }
                     
-                    stack.add(
-                         this.scriptManager.invokeFunction(t.getData(), stack)
-                    );
+                    stack.add(this.scriptManager.invokeFunction(t.getData(), stack));
                     
                     break;
             }

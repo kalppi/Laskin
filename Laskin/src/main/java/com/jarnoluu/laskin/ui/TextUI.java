@@ -24,7 +24,14 @@ public class TextUI implements UI {
         
         boolean ok = true;
         
-        Calculator c = new Calculator();
+        Calculator c;
+        
+        try {
+            c = new Calculator();
+        } catch (Exception e) {
+            System.out.println("Failed to start calculator: " + e.getMessage());
+            return;
+        }
         
         while (ok) {
             System.out.print("> ");
