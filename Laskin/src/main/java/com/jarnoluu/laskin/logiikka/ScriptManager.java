@@ -41,7 +41,7 @@ public class ScriptManager {
         this.functions = new HashMap();
         this.factory = new ScriptEngineManager();
         
-        this.pattern = Pattern.compile(".*function\\s+_?[a-zA-Z0-9]+\\((.*?)\\)\\s+\\{.*", Pattern.MULTILINE);
+        this.pattern = Pattern.compile("function\\s+_?[a-zA-Z0-9]+\\((.*?)\\)\\s+\\{");
     }
     
     public boolean functionExists(String f) {
@@ -78,14 +78,17 @@ public class ScriptManager {
         
         for (Entry<String, Object> e : bindings.entrySet()) {
             Matcher m = this.pattern.matcher(e.getValue().toString());
-            m.find();
+            
+            if (!m.find()) {
+                continue;
+            }
 
             int argCount = m.group(1).split(",").length;
 
             if (argCount > ScriptManager.MAX_FUNCTION_ARGS) {
                 throw new LaskinScriptException("Invalid function \"" + e.getKey() + "\" (more than " + ScriptManager.MAX_FUNCTION_ARGS + " parameters)");
             }
-
+            
             this.functions.put((String) e.getKey(),
                 Pair.with(inv, argCount)
             );
@@ -117,6 +120,8 @@ public class ScriptManager {
             }
         } catch (ScriptException | NoSuchMethodException e) {
             throw new LaskinCalculationException("Failed to call function (" + f + ")");
+        } catch (Exception e) {
+            throw new LaskinCalculationException("Unknown error");
         }
     }
 }

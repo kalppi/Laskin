@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class CalculatorTest {
     private final Calculator calculator;
     
-    public CalculatorTest() {
+    public CalculatorTest() throws Exception {
         this.calculator = new Calculator();
     }
 
@@ -37,22 +37,34 @@ public class CalculatorTest {
     
     @Test
     public void testCalculation4() throws Exception {
-        double val = this.calculator.calculate("2+max(2,3)");
-
-        assertEquals(5, val, 0.00001);
-    }
-    
-    @Test
-    public void testCalculation5() throws Exception {
         double val = this.calculator.calculate(" 1+(2+   -2)");
 
         assertEquals(1, val, 0.00001);
     }
     
     @Test
-    public void testCalculation6() throws Exception {
+    public void testCalculation5() throws Exception {
         double val = this.calculator.calculate("11%3+2");
 
         assertEquals(4, val, 0.00001);
+    }
+    
+    @Test
+    public void testCalculationFunctions1() throws Exception {
+        double val = this.calculator.calculate("1+abs(-1)");
+
+        assertEquals(2, val, 0.00001);
+    }
+    
+    @Test
+    public void testCalculationFunctions2() throws Exception {
+        double val = this.calculator.calculate("1+max(1, 2)");
+
+        assertEquals(3, val, 0.00001);
+    }
+    
+    @Test
+    public void testFormatting() {
+        assertEquals(this.calculator.formatValue(2.23232512), "2.23233");
     }
 }

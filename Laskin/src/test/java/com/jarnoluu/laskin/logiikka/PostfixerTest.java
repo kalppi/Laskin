@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class PostfixerTest {
     private final Calculator calculator;
     
-    public PostfixerTest() {
+    public PostfixerTest() throws Exception {
         this.calculator = new Calculator();
     }
     
