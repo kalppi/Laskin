@@ -22,7 +22,7 @@ public class Calculator {
     public Calculator() {
         this.parser = new Parser();
         this.postfixer = new Postfixer();
-        this.scriptManager = new ScriptManager("JavaScript");
+        this.scriptManager = new ScriptManager("JavaScript", "js/");
         
         this.scriptManager.loadScript("operators.js");
         this.scriptManager.loadScript("functions.js");

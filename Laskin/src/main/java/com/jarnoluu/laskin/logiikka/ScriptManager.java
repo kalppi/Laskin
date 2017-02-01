@@ -28,10 +28,12 @@ public class ScriptManager {
     private final Map<String, Pair<Invocable, Integer>> functions;
     private final ScriptEngineManager factory;
     private final String language;
+    private final String path;
     private final Pattern pattern;
             
-    public ScriptManager(String language) {
+    public ScriptManager(String language, String path) {
         this.language = language;
+        this.path = path;
         
         this.functions = new HashMap();
         this.factory = new ScriptEngineManager();
@@ -45,7 +47,7 @@ public class ScriptManager {
     
     public void loadScript(String file) {
         try {
-            URL r = ScriptManager.class.getClassLoader().getResource("js/" + file);
+            URL r = ScriptManager.class.getClassLoader().getResource(this.path + file);
             
             try {
                 Reader reader = new InputStreamReader(r.openStream());
