@@ -33,7 +33,7 @@ public class ScriptManager {
     private final String path;
     private final Pattern pattern;
     private final static int MAX_FUNCTION_ARGS = 4;
-            
+    
     public ScriptManager(String language, String path) {
         this.language = language;
         this.path = path;

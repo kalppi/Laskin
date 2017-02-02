@@ -8,20 +8,24 @@ import java.util.Stack;
  *
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
-public class Postfixer {
-    private enum Associativity {
+public class InfixToPostfix {
+    private InfixToPostfix() {
+        
+    }
+    
+    private static enum Associativity {
         LEFT, RIGHT
     }
         
-    private Postfixer.Associativity getOpAssociativity(String op) {
+    private static InfixToPostfix.Associativity getOpAssociativity(String op) {
         if (op.equals("^")) {
-            return Postfixer.Associativity.RIGHT;
+            return InfixToPostfix.Associativity.RIGHT;
         } else {
-            return Postfixer.Associativity.LEFT;
+            return InfixToPostfix.Associativity.LEFT;
         }
     }
     
-    private int getOpPrecedence(String op) {
+    private static int getOpPrecedence(String op) {
         switch (op) {
             case "+":
             case "-":
@@ -46,7 +50,7 @@ public class Postfixer {
      * @return List of tokens in postfix notation
      */
     
-    public List<Token> infixToPostfix(List<Token> infix) {
+    public static List<Token> transform(List<Token> infix) {
         List<Token> output = new ArrayList();
         Stack<Token> stack = new Stack();
         
@@ -61,14 +65,14 @@ public class Postfixer {
                     while (stack.size() > 0 && stack.peek().getType() == Token.Type.OPER) {
                         Token t2 = stack.peek();
                         
-                        if (this.getOpAssociativity(t.getData()) == Postfixer.Associativity.LEFT) {
-                            if (this.getOpPrecedence(t.getData()) <= this.getOpPrecedence(t2.getData())) {
+                        if (InfixToPostfix.getOpAssociativity(t.getData()) == InfixToPostfix.Associativity.LEFT) {
+                            if (InfixToPostfix.getOpPrecedence(t.getData()) <= InfixToPostfix.getOpPrecedence(t2.getData())) {
                                 output.add(stack.pop());
                             } else {
                                 break;
                             }
                         } else {
-                            if (this.getOpPrecedence(t.getData()) < this.getOpPrecedence(t2.getData())) {
+                            if (InfixToPostfix.getOpPrecedence(t.getData()) < InfixToPostfix.getOpPrecedence(t2.getData())) {
                                 output.add(stack.pop());
                             } else {
                                 break;

@@ -9,6 +9,10 @@ import java.util.List;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Parser {
+    public Parser() {
+        
+    }
+    
     private boolean isDigit(char c) {
         return Character.isDigit(c);
     }
@@ -55,7 +59,6 @@ public class Parser {
     private String removeWhiteSpace(String input) {
         return input.replaceAll("\\s", "");
     }
-
     
     public List<Token> tokenize(String input) throws LaskinParseException {
         input = this.removeWhiteSpace(input);

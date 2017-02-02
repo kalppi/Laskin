@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
  *
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
-public class PostfixerTest {
-    private final Calculator calculator;
+public class InfixToPostfixTest {
+    private final Parser parser;
     
-    public PostfixerTest() throws Exception {
-        this.calculator = new Calculator();
+    public InfixToPostfixTest() throws Exception {
+        this.parser = new Parser();
     }
     
     @Test
@@ -25,8 +25,8 @@ public class PostfixerTest {
                 new Token(Token.Type.OPER, "+")
         );
         
-        List<Token> tokens = this.calculator.getParser().tokenize("12+10");
-        List<Token> postfix = this.calculator.getPostfixer().infixToPostfix(tokens);
+        List<Token> tokens = this.parser.tokenize("12+10");
+        List<Token> postfix = InfixToPostfix.transform(tokens);
 
         assertThat(postfix, is(expected));
     }
@@ -49,9 +49,9 @@ public class PostfixerTest {
                 new Token(Token.Type.OPER, "+")
         );
         
-        List<Token> tokens = this.calculator.getParser().tokenize("3+4*2/(1-5)^2^3");
-        List<Token> postfix = this.calculator.getPostfixer().infixToPostfix(tokens);
-
+        List<Token> tokens = this.parser.tokenize("3+4*2/(1-5)^2^3");
+        List<Token> postfix = InfixToPostfix.transform(tokens);
+        
         assertThat(postfix, is(expected));
     }
     
@@ -68,8 +68,8 @@ public class PostfixerTest {
                 new Token(Token.Type.FUNC, "sin")
         );
                 
-        List<Token> tokens = this.calculator.getParser().tokenize("sin ( max ( 2, 3 ) / 3 * 3)");
-        List<Token> postfix = this.calculator.getPostfixer().infixToPostfix(tokens);
+        List<Token> tokens = this.parser.tokenize("sin ( max ( 2, 3 ) / 3 * 3)");
+        List<Token> postfix = InfixToPostfix.transform(tokens);
 
         assertThat(postfix, is(expected));
     }

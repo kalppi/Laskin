@@ -18,11 +18,10 @@ public class Calculator {
     private final ScriptManager scriptManager;
     
     private final Parser parser;
-    private final Postfixer postfixer;
     
     public Calculator() throws LaskinScriptException {
         this.parser = new Parser();
-        this.postfixer = new Postfixer();
+        
         this.scriptManager = new ScriptManager("JavaScript", "js/");
         
         this.scriptManager.loadScript("operators.js");
@@ -39,15 +38,11 @@ public class Calculator {
     public Parser getParser() {
         return this.parser;
     }
-    
-    public Postfixer getPostfixer() {
-        return this.postfixer;
-    }
      
     public double calculate(String input) throws LaskinParseException, LaskinCalculationException {
         List<Token> tokens = this.parser.tokenize(input);
         
-        tokens = this.postfixer.infixToPostfix(tokens);
+        tokens = InfixToPostfix.transform(tokens);
         
         LinkedList<Double> stack = new LinkedList();
                 
