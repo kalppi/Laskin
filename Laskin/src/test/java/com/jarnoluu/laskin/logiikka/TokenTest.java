@@ -13,12 +13,17 @@ public class TokenTest {
     
     @Test
     public void testToString1() {
-        assertEquals(new Token(Token.Type.NUMBER, "2").toString(), "NUMBER(2)");
+        assertEquals(new Token(Token.Type.NUMBER, "2").toString(), "2");
     }
     
     @Test
     public void testToString2() {
-        assertEquals(new Token(Token.Type.BRACKET_START).toString(), "BRACKET_START");
+        assertEquals(new Token(Token.Type.BRACKET_START).toString(), "(");
+    }
+    
+    @Test
+    public void testToString3() {
+        assertEquals(new Token(Token.Type.SPECIAL, "$").toString(), "$");
     }
     
     @Test

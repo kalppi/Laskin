@@ -22,6 +22,11 @@ public class CalculatorTest {
     }
     
     @Test
+    public void testCalculationEmpty() throws Exception {
+        this.calculator.calculate("");
+    }
+    
+    @Test
     public void testCalculation2() throws Exception {
         double val = this.calculator.calculate("10+(2^10)-2");
 

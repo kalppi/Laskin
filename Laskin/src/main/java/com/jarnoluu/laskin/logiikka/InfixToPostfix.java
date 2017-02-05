@@ -59,6 +59,7 @@ public class InfixToPostfix {
             
             switch (t.getType()) {
                 case NUMBER:
+                case SPECIAL:
                     output.add(t);
                     break;
                 case OPER:

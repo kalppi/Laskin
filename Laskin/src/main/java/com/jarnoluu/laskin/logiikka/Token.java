@@ -11,7 +11,9 @@ public class Token {
         COMMA,
         NUMBER,
         OPER,
-        FUNC
+        FUNC,
+        SPECIAL,
+        UNKNOWN
     }
     
     private final Token.Type type;
@@ -37,11 +39,39 @@ public class Token {
     
     @Override
     public String toString() {
-        if (this.data != null) {
-            return this.type.toString() + "(" + this.data + ")";
+        String text = this.data;
+                        
+        if (text == null) {
+            switch (type) {
+                case BRACKET_START:
+                    text = "(";
+                    break;
+                case BRACKET_END:
+                    text = ")";
+                    break;
+                case COMMA:
+                    text = ",";
+                    break;
+                default:
+                    break;
+            }
         } else {
-            return this.type.toString();
+            if (this.type == Token.Type.SPECIAL) {
+                switch (text) {
+                    case "pi":
+                        text = "π";
+                        break;
+                }
+            } else {
+                if (text.equals("*")) {
+                    text = "×";
+                } else if (text.equals("/")) {
+                    text = "÷";
+                }
+            }
         }
+        
+        return text;
     }
     
     @Override

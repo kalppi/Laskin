@@ -4,6 +4,7 @@ import com.jarnoluu.laskin.exceptions.LaskinParseException;
 import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
 import com.jarnoluu.laskin.exceptions.LaskinScriptException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,11 +18,9 @@ public class Calculator {
     private final Map<String, String> operators = new HashMap();
     private final ScriptManager scriptManager;
     
-    private final Parser parser;
+    private double lastValue = 0;
     
     public Calculator() throws LaskinScriptException {
-        this.parser = new Parser();
-        
         this.scriptManager = new ScriptManager("JavaScript", "js/");
         
         this.scriptManager.loadScript("operators.js");
@@ -35,23 +34,37 @@ public class Calculator {
         this.operators.put("%", "_mod");
     }
     
-    public Parser getParser() {
-        return this.parser;
+    public double getLastValue() {
+        return this.lastValue;
+    }
+    
+    private double getSpecialValue(String special) {
+        switch (special) {
+            case "pi":
+                return Math.PI;
+            case "$":
+                return this.lastValue;
+            default:
+                return 0;
+        }
     }
      
     public double calculate(String input) throws LaskinParseException, LaskinCalculationException {
-        List<Token> tokens = this.parser.tokenize(input);
+        List<Token> tokens = Parser.tokenize(input);
         
         tokens = InfixToPostfix.transform(tokens);
         
         LinkedList<Double> stack = new LinkedList();
-                
+        
         while (tokens.size() > 0) {
             Token t = tokens.remove(0);
             
             switch (t.getType()) {
                 case NUMBER:
                     stack.add(Double.parseDouble(t.getData()));
+                    break;
+                case SPECIAL:
+                    stack.add(this.getSpecialValue(t.getData()));
                     break;
                 case OPER:
                     String func = this.operators.get(t.getData());
@@ -76,13 +89,23 @@ public class Calculator {
         
         if (stack.size() > 1) {
             throw new LaskinCalculationException("Error");
+        } else if (stack.isEmpty()) {
+            return 0;
         }
         
-        return stack.get(0);
+        double val = stack.get(0);
+        this.lastValue = val;
+        
+        return val;
     }
     
-    public String formatValue(Double val) {
-        DecimalFormat decimalFormat = new DecimalFormat("0.#####");
+    public static String formatValue(Double val) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
+        DecimalFormatSymbols symbols = decimalFormat.getDecimalFormatSymbols();
+        symbols.setDecimalSeparator('.');
+        symbols.setGroupingSeparator(' ');
+        decimalFormat.setDecimalFormatSymbols(symbols);
+        
         return decimalFormat.format(val);
     }
 }

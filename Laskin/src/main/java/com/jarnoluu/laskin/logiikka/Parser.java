@@ -1,27 +1,26 @@
 package com.jarnoluu.laskin.logiikka;
 
 import com.jarnoluu.laskin.exceptions.LaskinParseException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 /**
  *
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Parser {
-    public Parser() {
+    private Parser() {
         
     }
     
-    private boolean isDigit(char c) {
+    private static boolean isDigit(char c) {
         return Character.isDigit(c);
     }
     
-    private boolean isLetter(char c) {
+    private static boolean isLetter(char c) {
         return Character.isLetter(c);
     }
     
-    private boolean isOper(char c) {
+    private static boolean isOper(char c) {
         switch (c) {
             case '+':
             case '-':
@@ -35,7 +34,7 @@ public class Parser {
         }
     }
     
-    private void validBrackets(String input) throws LaskinParseException {
+    private static void validateBrackets(String input) throws LaskinParseException {
         int brackets = 0;
         
         for (int i = 0; i < input.length(); i++) {
@@ -56,29 +55,45 @@ public class Parser {
         }
     }
     
-    private String removeWhiteSpace(String input) {
+    private static String removeWhiteSpace(String input) {
         return input.replaceAll("\\s", "");
     }
     
-    public List<Token> tokenize(String input) throws LaskinParseException {
-        input = this.removeWhiteSpace(input);
+    public static LinkedList<Token> tokenize(String input) throws LaskinParseException {
+        return Parser.tokenize(input, true, false);
+    }
+    
+    public static LinkedList<Token> tokenize(String input, boolean checkBrackets, boolean allowUnknown) throws LaskinParseException {
+        input = Parser.removeWhiteSpace(input);
+        input = input.toLowerCase();
         
-        this.validBrackets(input);
+        if (checkBrackets) {
+            Parser.validateBrackets(input);
+        }
         
-        List<Token> tokens = new ArrayList();
+        LinkedList<Token> tokens = new LinkedList();
+        
         
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             
-            if (this.isDigit(c)) {
+            if (Parser.isDigit(c)) {
                 String number = String.valueOf(c);
+                boolean hasDecimalPoint = false;
                 
                 while (i < input.length() - 1) {
                     i++;
                     c = input.charAt(i);
                     
-                    if (this.isDigit(c)) {
+                    if (Parser.isDigit(c)) {
                         number += c;
+                    } else if (c == '.') {
+                        if (hasDecimalPoint) {
+                            throw new LaskinParseException("Too many decimal points");
+                        } else {
+                            number += '.';
+                            hasDecimalPoint = true;
+                        }
                     } else {
                         i--;
                         break;
@@ -86,10 +101,10 @@ public class Parser {
                 }
                 
                 tokens.add(new Token(Token.Type.NUMBER, number));
-            } else if (this.isOper(c)) {
+            } else if (Parser.isOper(c)) {
                 if (c == '-' &&
-                    this.isDigit(input.charAt(i + 1)) &&
-                    (tokens.isEmpty() || input.charAt(i - 1) == '(' || this.isOper(input.charAt(i - 1)))) {
+                    i < input.length() - 1 && Parser.isDigit(input.charAt(i + 1)) &&
+                    (tokens.isEmpty() || input.charAt(i - 1) == '(' || Parser.isOper(input.charAt(i - 1)))) {
                     
                     String number = String.valueOf(c);
                     
@@ -97,7 +112,7 @@ public class Parser {
                         i++;
                         c = input.charAt(i);
 
-                        if (this.isDigit(c)) {
+                        if (Parser.isDigit(c)) {
                             number += c;
                         } else {
                             i--;
@@ -115,10 +130,30 @@ public class Parser {
                 tokens.add(new Token(Token.Type.BRACKET_END));
             } else if (c == ',') {
                 tokens.add(new Token(Token.Type.COMMA));
-            } else if (this.isLetter(c)) {
+            } else if (c == '$') {
+                tokens.add(new Token(Token.Type.SPECIAL, "$"));
+            } else if (c == '.') {
+                String number = "0" + String.valueOf(c);
+                    
+                while (i < input.length() - 1) {
+                    i++;
+                    c = input.charAt(i);
+
+                    if (Parser.isDigit(c)) {
+                        number += c;
+                    } else if (c == '.') {
+                        throw new LaskinParseException("Too many decimal points");
+                    } else {
+                        i--;
+                        break;
+                    }
+                }
+
+                tokens.add(new Token(Token.Type.NUMBER, number));
+            } else if (Parser.isLetter(c)) {
                 String str = "";
                 
-                while (this.isLetter(c)) {
+                while (Parser.isLetter(c)) {
                     str += c;
                     i++;
                     
@@ -131,9 +166,19 @@ public class Parser {
                 
                 i--;
                 
-                tokens.add(new Token(Token.Type.FUNC, str));
+                switch (str) {
+                    case "pi":
+                        tokens.add(new Token(Token.Type.SPECIAL, "pi"));
+                        break;
+                    default:
+                        tokens.add(new Token(Token.Type.FUNC, str));
+                }
             } else {
-                throw new LaskinParseException("Unknown character (" + c + ")");
+                if (allowUnknown) {
+                    tokens.add(new Token(Token.Type.UNKNOWN, String.valueOf(c)));
+                } else {
+                    throw new LaskinParseException("Unknown character (" + c + ")");
+                }
             }
         }
         

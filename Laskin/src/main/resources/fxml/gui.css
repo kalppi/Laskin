@@ -1,0 +1,21 @@
+#AnchorPane {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-font-size: 20;
+    -fx-padding: 0;
+    -fx-text-fill: black;
+}
+
+.buttonSmaller {
+    -fx-font-size: 14;
+    -fx-padding: 0;
+    -fx-text-fill: black;
+}
+
+.button:focused {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}

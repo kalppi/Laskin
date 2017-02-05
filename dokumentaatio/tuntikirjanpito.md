@@ -6,3 +6,5 @@ Päivä | Tunnit | Kuvaus
 31.01.2017 | 3h | Rakenteen mietiskelyä, yleistä toteutusta
 01.02.2017 | 4h | Skriptauksen toteutusta, yleistä hiomista
 02.02.2017 | 2h | Rakenteen uudelleenmietintää
+04.02.2017 | 5h | Graafista käyttöliittymää
+05.02.2017 | 4.5h | Graafista käyttöliittymää

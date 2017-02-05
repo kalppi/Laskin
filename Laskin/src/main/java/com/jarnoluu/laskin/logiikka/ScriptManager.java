@@ -2,10 +2,10 @@ package com.jarnoluu.laskin.logiikka;
 
 import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
 import com.jarnoluu.laskin.exceptions.LaskinScriptException;
-import java.io.IOException;
+import com.jarnoluu.laskin.io.FileManager;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,17 +49,15 @@ public class ScriptManager {
     }
     
     public void loadScript(String file) throws LaskinScriptException {
-        URL r = ScriptManager.class.getClassLoader().getResource(this.path + file);
+        InputStream stream = FileManager.openFileStream(this.path + file);
         
-        Reader reader = null;
-        try {
-            reader = new InputStreamReader(r.openStream());
-        } catch (IOException e) {
+        if (stream == null) {
             throw new LaskinScriptException("Could not load script file (" + file + ")");
         }
-
+        
+        Reader reader = new InputStreamReader(stream);
+        
         ScriptEngine engine = this.factory.getEngineByName(this.language);
-
         Compilable compilingEngine = (Compilable) engine;
 
         CompiledScript script = null;

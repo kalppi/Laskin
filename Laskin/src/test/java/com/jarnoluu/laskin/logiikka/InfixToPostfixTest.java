@@ -11,10 +11,8 @@ import static org.junit.Assert.*;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class InfixToPostfixTest {
-    private final Parser parser;
-    
     public InfixToPostfixTest() throws Exception {
-        this.parser = new Parser();
+
     }
     
     @Test
@@ -25,7 +23,7 @@ public class InfixToPostfixTest {
                 new Token(Token.Type.OPER, "+")
         );
         
-        List<Token> tokens = this.parser.tokenize("12+10");
+        List<Token> tokens = Parser.tokenize("12+10");
         List<Token> postfix = InfixToPostfix.transform(tokens);
 
         assertThat(postfix, is(expected));
@@ -49,7 +47,7 @@ public class InfixToPostfixTest {
                 new Token(Token.Type.OPER, "+")
         );
         
-        List<Token> tokens = this.parser.tokenize("3+4*2/(1-5)^2^3");
+        List<Token> tokens = Parser.tokenize("3+4*2/(1-5)^2^3");
         List<Token> postfix = InfixToPostfix.transform(tokens);
         
         assertThat(postfix, is(expected));
@@ -68,7 +66,7 @@ public class InfixToPostfixTest {
                 new Token(Token.Type.FUNC, "sin")
         );
                 
-        List<Token> tokens = this.parser.tokenize("sin ( max ( 2, 3 ) / 3 * 3)");
+        List<Token> tokens = Parser.tokenize("sin ( max ( 2, 3 ) / 3 * 3)");
         List<Token> postfix = InfixToPostfix.transform(tokens);
 
         assertThat(postfix, is(expected));

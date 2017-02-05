@@ -12,41 +12,39 @@ import static org.junit.Assert.*;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class ParserTest {
-    private final Parser parser;
-    
     public ParserTest() {
-        parser = new Parser();
+
     }
     
     @Test(expected=LaskinParseException.class)
     public void testWrongNumberOfBrackets() throws Exception {
-        this.parser.tokenize("1+2*(4+4))");
+        Parser.tokenize("1+2*(4+4))");
     }
     
     @Test(expected=LaskinParseException.class)
     public void testWrongOrderOfBrackets() throws Exception {
-        this.parser.tokenize("1+2*)4+4(");
+        Parser.tokenize("1+2*)4+4(");
     }
     
     @Test
     public void testRightNumberOfTokens() throws Exception {
-        List<Token> tokens = parser.tokenize("1 *  2+   4/5+(6 - 7)");
+        List<Token> tokens = Parser.tokenize("1 *  2+   4/5+(6 - 7)");
         assertEquals(tokens.size(), 13);
     }
     
     @Test(expected=LaskinParseException.class)
     public void testUnknownCharacters() throws Exception {
-        this.parser.tokenize("1+2+_34");
+        Parser.tokenize("1+2+_34");
     }
     
     @Test(expected=LaskinParseException.class)
     public void testUnknownCharacters2() throws Exception {
-        this.parser.tokenize("1+2'+34");
+        Parser.tokenize("1+2'+34");
     }
     
     @Test
     public void testWhitespace() throws Exception {
-        this.parser.tokenize("1   +  2      * 4");
+        Parser.tokenize("1   +  2      * 4");
     }
     
     @Test
@@ -59,7 +57,7 @@ public class ParserTest {
                 new Token(Token.Type.NUMBER, "3")
         );
         
-        List<Token> tokens = this.parser.tokenize("1+2*3");
+        List<Token> tokens = Parser.tokenize("1+2*3");
         
         assertThat(tokens, is(expected));
     }
@@ -76,7 +74,7 @@ public class ParserTest {
                 new Token(Token.Type.BRACKET_END)
         );
         
-        List<Token> tokens = this.parser.tokenize("3^(2+3)");
+        List<Token> tokens = Parser.tokenize("3^(2+3)");
         
         assertThat(tokens, is(expected));
     }
@@ -96,7 +94,7 @@ public class ParserTest {
                 new Token(Token.Type.NUMBER, "2")
         );
         
-        List<Token> tokens = this.parser.tokenize("2+max(2,3)-2");
+        List<Token> tokens = Parser.tokenize("2+max(2,3)-2");
         
         assertThat(tokens, is(expected));
     }
@@ -115,15 +113,50 @@ public class ParserTest {
                 new Token(Token.Type.NUMBER, "5")
         );
         
-        List<Token> tokens = this.parser.tokenize("-2+(-3-4)-5");
+        List<Token> tokens = Parser.tokenize("-2+(-3-4)-5");
         
         assertThat(tokens, is(expected));
     }
     
     @Test
+    public void testTokenize5() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(Token.Type.NUMBER, "-2"),
+                new Token(Token.Type.OPER, "-")
+        );
+        
+        List<Token> tokens = Parser.tokenize("-2-");
+        
+        assertThat(tokens, is(expected));
+    }
+    
+    @Test
+    public void testDecimals() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(Token.Type.NUMBER, "0.222"),
+                new Token(Token.Type.OPER, "+"),
+                new Token(Token.Type.NUMBER, "0.333")
+        );
+        
+        List<Token> tokens = Parser.tokenize("0.222+.333");
+        
+        assertThat(tokens, is(expected));
+    }
+    
+    @Test(expected=LaskinParseException.class)
+    public void testTooManyDecimalPoints() throws Exception {
+        Parser.tokenize("0.22.2+.333");
+    }
+    
+    @Test(expected=LaskinParseException.class)
+    public void testTooManyDecimalPoints2() throws Exception {
+        Parser.tokenize("0.222+..333");
+    }
+    
+    @Test
     public void testMalformedCalculations() throws LaskinParseException {
-        this.parser.tokenize("+232-2/");
-        this.parser.tokenize("%32+()");
-        this.parser.tokenize("()-22+(43%)");
+        Parser.tokenize("+232-2/");
+        Parser.tokenize("%32+()");
+        Parser.tokenize("()-22+(43%)");
     }
 }

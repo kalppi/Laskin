@@ -3,6 +3,8 @@ package com.jarnoluu.laskin.ui;
 import com.jarnoluu.laskin.logiikka.Calculator;
 import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
 import com.jarnoluu.laskin.exceptions.LaskinParseException;
+import com.jarnoluu.laskin.logiikka.InfixToPostfix;
+import com.jarnoluu.laskin.logiikka.Parser;
 import com.jarnoluu.laskin.logiikka.Token;
 import java.util.List;
 import java.util.Scanner;
@@ -45,7 +47,7 @@ public class TextUI implements UI {
                     break;
                 case ".tokenize":
                     try {
-                        List<Token> tokens = c.getParser().tokenize(parts[1]);
+                        List<Token> tokens = Parser.tokenize(parts[1]);
                         
                         tokens.stream().forEach((t) -> {
                             System.out.println(t);
@@ -57,7 +59,8 @@ public class TextUI implements UI {
                     break;
                 case ".postfix":
                     try {
-                        List<Token> tokens = c.getParser().tokenize(parts[1]);
+                        List<Token> tokens = Parser.tokenize(parts[1]);
+                        tokens = InfixToPostfix.transform(tokens);
                         
                         tokens.stream().forEach((t) -> {
                             System.out.println(t);
@@ -71,7 +74,7 @@ public class TextUI implements UI {
                     try {
                         Double val = c.calculate(line);
                         
-                        System.out.println(c.formatValue(val));
+                        System.out.println(Calculator.formatValue(val));
                     } catch (LaskinParseException | LaskinCalculationException e) {
                         System.out.println("Error: " + e.getMessage());
                     }
