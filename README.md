@@ -6,6 +6,6 @@ Helppokäyttöinen ja käytännöllinen laskin.
 
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
-[pit-raportti](https://htmlpreview.github.io/?https://github.com/kalppi/Laskin/blob/master/dokumentaatio/pit-raportti/201702021650/index.html)
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/kalppi/Laskin/blob/master/dokumentaatio/pit-raportti/201702102058/index.html)
 
 [CheckStyle-raportti](https://htmlpreview.github.io/?https://github.com/kalppi/Laskin/blob/master/dokumentaatio/checkstyle-raportti/site/checkstyle.html)
