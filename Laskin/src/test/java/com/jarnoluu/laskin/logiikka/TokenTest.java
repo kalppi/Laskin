@@ -1,5 +1,6 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.logic.Token;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

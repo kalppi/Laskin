@@ -1,5 +1,7 @@
 package com.jarnoluu.laskin;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,10 +11,10 @@ import java.util.List;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Util {
+    private final static List<Character> VALID = Arrays.asList('-', '+', '*', '/', '%', '^', '$', '(', ')', ',', '.');
+    
     public static boolean validChar(char c) {
-        List<Character> valid = Arrays.asList('-', '+', '*', '/', '%', '^', '$', '(', ')', ',', '.');
-        
-        return valid.contains(c) || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
+        return  (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || Util.VALID.contains(c);
     }
     
     public static boolean isOper(char c) {
@@ -25,6 +27,34 @@ public class Util {
         }
         
         return false;
+    }
+    
+    public static boolean isHexNumber(String str) {
+        return str.matches("^0x[0-9a-f]+$");
+    }
+    
+    public static boolean isBinaryNumber(String str) {
+        return str.matches("^0b[01]+$");
+    }
+    
+    public static boolean isOctalNumber(String str) {
+        return str.matches("^0o[0-7]+$");
+    }
+    
+    public static boolean isIntegerNumber(String str) {
+        return str.matches("^[0-9]+$");
+    }
+    
+    public static double hexToDouble(String hex) {
+        return (double) Integer.parseInt(hex.substring(2), 16);
+    }
+    
+    public static double binToDouble(String bin) {
+        return (double) Integer.parseInt(bin.substring(2), 2);
+    }
+    
+    public static double octToDouble(String bin) {
+        return (double) Integer.parseInt(bin.substring(2), 8);
     }
     
     public static LinkedList<String> splitNumber(String number, int groups) {
@@ -52,5 +82,20 @@ public class Util {
         }
         
         return parts;
+    }
+
+    public static String formatSimple(Double val) {
+        // Format the value so that it loses its trailing zeros (e.g. 123.0 -> 123)
+        DecimalFormat format = new DecimalFormat("0.#####");
+        return format.format(val);
+    }
+
+    public static String formatValue(Double val) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
+        DecimalFormatSymbols symbols = decimalFormat.getDecimalFormatSymbols();
+        symbols.setDecimalSeparator('.');
+        symbols.setGroupingSeparator(' ');
+        decimalFormat.setDecimalFormatSymbols(symbols);
+        return decimalFormat.format(val);
     }
 }

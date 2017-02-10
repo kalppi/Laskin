@@ -1,13 +1,13 @@
-package com.jarnoluu.laskin.logiikka;
+package com.jarnoluu.laskin.logic;
 
+import com.jarnoluu.laskin.scripting.ScriptManager;
+import com.jarnoluu.laskin.Util;
 import com.jarnoluu.laskin.exceptions.LaskinParseException;
 import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
+import com.jarnoluu.laskin.exceptions.LaskinInvalidArgumentException;
 import com.jarnoluu.laskin.exceptions.LaskinScriptException;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,29 +48,47 @@ public class Calculator {
                 return 0;
         }
     }
-     
-    public double calculate(String input) throws LaskinParseException, LaskinCalculationException {
-        List<Token> tokens = Parser.tokenize(input);
+    
+    public double calculate(String input) throws LaskinInvalidArgumentException, LaskinParseException, LaskinCalculationException {
+        if (input == null || input.length() == 0) {
+            throw new LaskinInvalidArgumentException("Empty input");
+        }
         
+        LinkedList<Token> tokens = Parser.tokenize(input);
+        
+        return this.calculate(tokens);
+    }
+    
+    public double calculate(LinkedList<Token> tokens) throws LaskinInvalidArgumentException, LaskinParseException, LaskinCalculationException {
         tokens = InfixToPostfix.transform(tokens);
         
         LinkedList<Double> stack = new LinkedList();
         
         while (tokens.size() > 0) {
             Token t = tokens.remove(0);
+            String data = t.getData();
             
             switch (t.getType()) {
                 case NUMBER:
-                    stack.add(Double.parseDouble(t.getData()));
+                    stack.add(Double.parseDouble(data));
+                    break;
+                case NUMBER_HEX:
+                    stack.add(Util.hexToDouble(data));
+                    break;
+                case NUMBER_BIN:
+                    stack.add(Util.binToDouble(data));
+                    break;
+                case NUMBER_OCT:
+                    stack.add(Util.octToDouble(data));
                     break;
                 case SPECIAL:
-                    stack.add(this.getSpecialValue(t.getData()));
+                    stack.add(this.getSpecialValue(data));
                     break;
                 case OPER:
-                    String func = this.operators.get(t.getData());
+                    String func = this.operators.get(data);
                     
                     if (func == null) {
-                        throw new LaskinCalculationException("Unknown operator (" + t.getData() + ")");
+                        throw new LaskinCalculationException("Unknown operator (" + data + ")");
                     }
                     
                     stack.add(this.scriptManager.invokeFunction(func, stack));
@@ -78,10 +96,10 @@ public class Calculator {
                     break;
                 case FUNC:
                     if (!this.scriptManager.functionExists(t.getData())) {
-                        throw new LaskinCalculationException("Unknown function (" + t.getData() + ")");
+                        throw new LaskinCalculationException("Unknown function (" + data + ")");
                     }
                     
-                    stack.add(this.scriptManager.invokeFunction(t.getData(), stack));
+                    stack.add(this.scriptManager.invokeFunction(data, stack));
                     
                     break;
             }
@@ -97,15 +115,5 @@ public class Calculator {
         this.lastValue = val;
         
         return val;
-    }
-    
-    public static String formatValue(Double val) {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###.#####");
-        DecimalFormatSymbols symbols = decimalFormat.getDecimalFormatSymbols();
-        symbols.setDecimalSeparator('.');
-        symbols.setGroupingSeparator(' ');
-        decimalFormat.setDecimalFormatSymbols(symbols);
-        
-        return decimalFormat.format(val);
     }
 }

@@ -7,4 +7,6 @@ Päivä | Tunnit | Kuvaus
 01.02.2017 | 4h | Skriptauksen toteutusta, yleistä hiomista
 02.02.2017 | 2h | Rakenteen uudelleenmietintää
 04.02.2017 | 5h | Graafista käyttöliittymää
-05.02.2017 | 4.5h | Graafista käyttöliittymää
+05.02.2017 | 6h | Graafista käyttöliittymää, rakenteen viilausta
+07.02.2017 | 4h | Laskun graafisen esityksen miettimistä ja sen kanssa hifistelyä
+10.02.2017 | 2h | Koodin siistimistä

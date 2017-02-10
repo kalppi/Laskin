@@ -1,0 +1,170 @@
+package com.jarnoluu.laskin.logic;
+
+import com.jarnoluu.laskin.Util;
+import com.jarnoluu.laskin.ui.events.CalculationStringChangeEvent;
+import com.jarnoluu.laskin.ui.events.CalculationStringErrorStateChangeEvent;
+import com.jarnoluu.laskin.exceptions.LaskinCalculationException;
+import com.jarnoluu.laskin.exceptions.LaskinInvalidArgumentException;
+import com.jarnoluu.laskin.exceptions.LaskinParseException;
+import com.jarnoluu.laskin.ui.events.CalculationStringCalculateEvent;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import org.javatuples.Pair;
+
+/**
+ *
+ * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ */
+public abstract class CalculationString {
+    protected final Calculator calculator;
+    protected LinkedList<Token> tokens = new LinkedList();
+    protected boolean error = false;
+    protected int cursor = 0;
+    protected int selected = -1;
+    
+    private final Map<String, List<Pair<Function<String, Boolean>, Function<String, String>>>> conversions = new HashMap();
+    private final List<CalculationStringChangeEvent> events = new LinkedList();
+    private final List<CalculationStringErrorStateChangeEvent> onErrorChange = new LinkedList();
+    private final List<CalculationStringCalculateEvent> onCalculate = new LinkedList();
+    
+    public CalculationString(Calculator calc) {
+        this(calc, null);
+    }
+    
+    public CalculationString(Calculator calculator, String calc) {
+        this.calculator = calculator;
+        
+        if (calc != null) {
+            this.insertAtCursor(calc);
+        }
+        
+        this.clear();
+        
+        List<Pair<Function<String, Boolean>, Function<String, String>>> decConv = new LinkedList();
+        decConv.add(Pair.with(Util::isHexNumber, (String s) -> Util.formatSimple(Util.hexToDouble(s))));
+        decConv.add(Pair.with(Util::isBinaryNumber, (String s) -> Util.formatSimple(Util.binToDouble(s))));
+        decConv.add(Pair.with(Util::isOctalNumber, (String s) -> Util.formatSimple(Util.octToDouble(s))));
+        
+        List<Pair<Function<String, Boolean>, Function<String, String>>> hexConv = new LinkedList();
+        hexConv.add(Pair.with(Util::isIntegerNumber, (String s) -> "0x" + Integer.toHexString(Integer.parseInt(s))));
+        hexConv.add(Pair.with(Util::isBinaryNumber, (String s) -> "0x" + Integer.toHexString((int) Util.binToDouble(s))));
+        hexConv.add(Pair.with(Util::isOctalNumber, (String s) -> "0x" + Integer.toHexString((int) Util.octToDouble(s))));
+        
+        List<Pair<Function<String, Boolean>, Function<String, String>>> binConv = new LinkedList();
+        binConv.add(Pair.with(Util::isIntegerNumber, (String s) -> "0b" + Integer.toBinaryString(Integer.parseInt(s))));
+        binConv.add(Pair.with(Util::isHexNumber, (String s) -> "0b" + Integer.toBinaryString((int) Util.hexToDouble(s))));
+        binConv.add(Pair.with(Util::isOctalNumber, (String s) -> "0b" + Integer.toBinaryString((int) Util.octToDouble(s))));
+        
+        List<Pair<Function<String, Boolean>, Function<String, String>>> octConv = new LinkedList();
+        octConv.add(Pair.with(Util::isIntegerNumber, (String s) -> "0o" + Integer.toOctalString(Integer.parseInt(s))));
+        octConv.add(Pair.with(Util::isBinaryNumber, (String s) -> "0o" + Integer.toOctalString((int) Util.binToDouble(s))));
+        octConv.add(Pair.with(Util::isHexNumber, (String s) -> "0o" + Integer.toOctalString((int) Util.hexToDouble(s))));       
+        
+        this.conversions.put("dec", decConv);
+        this.conversions.put("hex", hexConv);
+        this.conversions.put("bin", binConv);
+        this.conversions.put("oct", octConv);
+    }
+    
+    public Calculator getCalculator() {
+        return this.calculator;
+    }
+    
+    public LinkedList<Token> getTokens() {
+        return this.tokens;
+    }
+    
+    public boolean getError() {
+        return this.error;
+    }
+    
+    protected void setError(boolean error) {
+        if (this.error != error) {
+            this.error = error;
+            
+            this.fireErrorStateChangeEvent();
+        }
+    }
+    
+    protected Map<String, List<Pair<Function<String, Boolean>, Function<String, String>>>> getConversions() {
+        return this.conversions;
+    }
+    
+    public void addCalculationChangeListener(CalculationStringChangeEvent e) {
+        this.events.add(e);
+    }
+    
+    public void addErrorStateChangeListener(CalculationStringErrorStateChangeEvent e) {
+        this.onErrorChange.add(e);
+    }
+    
+    public void addCalculationListener(CalculationStringCalculateEvent e) {
+        this.onCalculate.add(e);
+    }
+    
+    protected void fireCalculationChangeEvent() {
+        this.events.stream().forEach((e) -> {
+            e.onCalculationChange();
+        });
+    }
+    
+    protected void fireErrorStateChangeEvent() {
+        this.onErrorChange.stream().forEach((e) -> {
+            e.onErrorStateChange(this.error);
+        });
+    }
+    
+    protected void fireCalculationEvent(double val, double old) {
+        this.onCalculate.stream().forEach((e) -> {
+            e.onCalculate(val, old);
+        });
+    }
+    
+    public double calculate() {
+        try {
+            Double old = this.calculator.getLastValue();
+            
+            double val = this.calculator.calculate(this.getTokens());
+            this.fireCalculationEvent(val, old);
+            return val;
+        } catch (LaskinParseException | LaskinCalculationException e) {
+            e.printStackTrace();
+            this.setError(true);
+        } catch (LaskinInvalidArgumentException e) {
+            e.printStackTrace();
+        }
+        
+        return 0;
+    }
+    
+    public void setCursor(int s) {
+        this.cursor = s;
+    }
+    
+    public int getCursor() {
+        return this.cursor;
+    }
+    
+    public void setSelected(int s) {
+        this.selected = s;
+    }
+    
+    public int getSelected() {
+        return this.selected;
+    }
+    
+    abstract public int length();
+    abstract public void clear();
+    
+    abstract public boolean insertAtCursor(String str);
+    abstract public boolean insertAtCursor(char c);
+    abstract public void eraseAtCursor();
+    abstract public void replaceWith(String str);
+    abstract public void convertAtCursor(String to);
+    abstract public void negateAtCursor();
+    @Override
+    abstract public String toString();
+}

@@ -1,5 +1,7 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.logic.Parser;
+import com.jarnoluu.laskin.logic.Token;
 import com.jarnoluu.laskin.exceptions.LaskinParseException;
 import java.util.Arrays;
 import java.util.List;
@@ -45,6 +47,39 @@ public class ParserTest {
     @Test
     public void testWhitespace() throws Exception {
         Parser.tokenize("1   +  2      * 4");
+    }
+    
+    @Test
+    public void testHexNumber() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(Token.Type.NUMBER_HEX, "0x2ff3")
+        );
+        
+        List<Token> tokens = Parser.tokenize("0x2ff3");
+        
+        assertThat(tokens, is(expected));
+    }
+    
+    @Test
+    public void testOctalNumber() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(Token.Type.NUMBER_OCT, "0o112")
+        );
+        
+        List<Token> tokens = Parser.tokenize("0o112");
+        
+        assertThat(tokens, is(expected));
+    }
+    
+    @Test
+    public void testBinaryNumber() throws Exception {
+        List<Token> expected = Arrays.asList(
+                new Token(Token.Type.NUMBER_BIN, "0b101")
+        );
+        
+        List<Token> tokens = Parser.tokenize("0b101");
+        
+        assertThat(tokens, is(expected));
     }
     
     @Test

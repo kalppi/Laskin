@@ -1,5 +1,8 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.Util;
+import com.jarnoluu.laskin.logic.Calculator;
+import com.jarnoluu.laskin.exceptions.LaskinInvalidArgumentException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,7 +24,7 @@ public class CalculatorTest {
         assertEquals(77.0, val, 0.00001);
     }
     
-    @Test
+    @Test(expected=LaskinInvalidArgumentException.class)
     public void testCalculationEmpty() throws Exception {
         this.calculator.calculate("");
     }
@@ -70,6 +73,6 @@ public class CalculatorTest {
     
     @Test
     public void testFormatting() {
-        assertEquals(this.calculator.formatValue(2.23232512), "2.23233");
+        assertEquals(Util.formatValue(2.23232512), "2.23233");
     }
 }

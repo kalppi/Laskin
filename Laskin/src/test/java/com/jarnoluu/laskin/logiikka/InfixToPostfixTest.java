@@ -1,6 +1,10 @@
 package com.jarnoluu.laskin.logiikka;
 
+import com.jarnoluu.laskin.logic.InfixToPostfix;
+import com.jarnoluu.laskin.logic.Parser;
+import com.jarnoluu.laskin.logic.Token;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
@@ -23,8 +27,8 @@ public class InfixToPostfixTest {
                 new Token(Token.Type.OPER, "+")
         );
         
-        List<Token> tokens = Parser.tokenize("12+10");
-        List<Token> postfix = InfixToPostfix.transform(tokens);
+        LinkedList<Token> tokens = Parser.tokenize("12+10");
+        LinkedList<Token> postfix = InfixToPostfix.transform(tokens);
 
         assertThat(postfix, is(expected));
     }
@@ -47,8 +51,8 @@ public class InfixToPostfixTest {
                 new Token(Token.Type.OPER, "+")
         );
         
-        List<Token> tokens = Parser.tokenize("3+4*2/(1-5)^2^3");
-        List<Token> postfix = InfixToPostfix.transform(tokens);
+        LinkedList<Token> tokens = Parser.tokenize("3+4*2/(1-5)^2^3");
+        LinkedList<Token> postfix = InfixToPostfix.transform(tokens);
         
         assertThat(postfix, is(expected));
     }
@@ -66,8 +70,8 @@ public class InfixToPostfixTest {
                 new Token(Token.Type.FUNC, "sin")
         );
                 
-        List<Token> tokens = Parser.tokenize("sin ( max ( 2, 3 ) / 3 * 3)");
-        List<Token> postfix = InfixToPostfix.transform(tokens);
+        LinkedList<Token> tokens = Parser.tokenize("sin ( max ( 2, 3 ) / 3 * 3)");
+        LinkedList<Token> postfix = InfixToPostfix.transform(tokens);
 
         assertThat(postfix, is(expected));
     }

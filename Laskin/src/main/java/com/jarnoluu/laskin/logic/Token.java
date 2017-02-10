@@ -1,4 +1,6 @@
-package com.jarnoluu.laskin.logiikka;
+package com.jarnoluu.laskin.logic;
+
+import java.util.List;
 
 /**
  *
@@ -10,14 +12,23 @@ public class Token {
         BRACKET_END,
         COMMA,
         NUMBER,
+        NUMBER_HEX,
+        NUMBER_BIN,
+        NUMBER_OCT,
         OPER,
         FUNC,
         SPECIAL,
-        UNKNOWN
+        UNKNOWN,
+        EMPTY
     }
     
     private final Token.Type type;
     private final String data;
+    
+    public Token(Token t) {
+        this.type = t.getType();
+        this.data = t.getData();
+    }
     
     public Token(Token.Type type) {
         this.type = type;
@@ -37,6 +48,23 @@ public class Token {
         return data;
     }
     
+    public static String join(CharSequence delimeter, List<Token> tokens) {
+        StringBuilder s = new StringBuilder();
+        
+        int i = 0;
+        for (Token t : tokens) {
+            s.append(t.toString());
+            
+            if (i < tokens.size() - 1) {
+                s.append(delimeter);
+            }
+            
+            i++;
+        }
+        
+        return s.toString();
+    }
+    
     @Override
     public String toString() {
         String text = this.data;
@@ -53,21 +81,30 @@ public class Token {
                     text = ",";
                     break;
                 default:
+                    text = "";
                     break;
             }
-        } else {
-            if (this.type == Token.Type.SPECIAL) {
-                switch (text) {
-                    case "pi":
-                        text = "π";
-                        break;
-                }
-            } else {
-                if (text.equals("*")) {
-                    text = "×";
-                } else if (text.equals("/")) {
-                    text = "÷";
-                }
+        }
+        
+        return text;
+    }
+    
+    public String toPrettyString() {
+        String text = this.toString();
+        
+        if (this.type == Token.Type.SPECIAL) {
+            switch (text) {
+                case "pi":
+                    text = "π";
+                    break;
+            }
+        } else if (this.type == Token.Type.EMPTY) {
+            text = " ";
+        } else if (text != null) {
+            if (text.equals("*")) {
+                text = "×";
+            } else if (text.equals("/")) {
+                text = "÷";
             }
         }
         

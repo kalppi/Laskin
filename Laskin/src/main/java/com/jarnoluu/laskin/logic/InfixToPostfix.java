@@ -1,6 +1,7 @@
-package com.jarnoluu.laskin.logiikka;
+package com.jarnoluu.laskin.logic;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -50,17 +51,21 @@ public class InfixToPostfix {
      * @return List of tokens in postfix notation
      */
     
-    public static List<Token> transform(List<Token> infix) {
-        List<Token> output = new ArrayList();
+    public static LinkedList<Token> transform(LinkedList<Token> infix) {
+        LinkedList<Token> output = new LinkedList();
         Stack<Token> stack = new Stack();
         
-        while (infix.size() > 0) {
-            Token t = infix.remove(0);
+        for (Token t : infix) {
+        /*while (infix.size() > 0) {
+            Token t = infix.remove(0);*/
             
             switch (t.getType()) {
                 case NUMBER:
+                case NUMBER_HEX:
+                case NUMBER_BIN:
+                case NUMBER_OCT:
                 case SPECIAL:
-                    output.add(t);
+                    output.add(new Token(t));
                     break;
                 case OPER:
                     while (stack.size() > 0 && stack.peek().getType() == Token.Type.OPER) {
@@ -68,13 +73,13 @@ public class InfixToPostfix {
                         
                         if (InfixToPostfix.getOpAssociativity(t.getData()) == InfixToPostfix.Associativity.LEFT) {
                             if (InfixToPostfix.getOpPrecedence(t.getData()) <= InfixToPostfix.getOpPrecedence(t2.getData())) {
-                                output.add(stack.pop());
+                                output.add(new Token(stack.pop()));
                             } else {
                                 break;
                             }
                         } else {
                             if (InfixToPostfix.getOpPrecedence(t.getData()) < InfixToPostfix.getOpPrecedence(t2.getData())) {
-                                output.add(stack.pop());
+                                output.add(new Token(stack.pop()));
                             } else {
                                 break;
                             }
@@ -94,7 +99,7 @@ public class InfixToPostfix {
                     stack.pop();
                     
                     if (stack.size() > 0 && stack.peek().getType() == Token.Type.FUNC) {
-                        output.add(stack.pop());
+                        output.add(new Token(stack.pop()));
                     }
                     
                     break;
@@ -103,7 +108,7 @@ public class InfixToPostfix {
                     break;
                 case COMMA:
                     while (stack.peek().getType() != Token.Type.BRACKET_START) {
-                        output.add(stack.pop());
+                        output.add(new Token(stack.pop()));
                     }
                     
                     break;
@@ -112,7 +117,7 @@ public class InfixToPostfix {
         }
         
         while (stack.size() > 0) {
-            output.add(stack.pop());
+            output.add(new Token(stack.pop()));
         }
         
         return output;
