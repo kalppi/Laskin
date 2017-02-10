@@ -162,6 +162,7 @@ public abstract class CalculationString {
     abstract public boolean insertAtCursor(String str);
     abstract public boolean insertAtCursor(char c);
     abstract public void eraseAtCursor();
+    abstract public void eraseAtCursor(int n);
     abstract public void replaceWith(String str);
     abstract public void convertAtCursor(String to);
     abstract public void negateAtCursor();

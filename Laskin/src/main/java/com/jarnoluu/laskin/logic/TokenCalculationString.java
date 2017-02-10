@@ -82,6 +82,12 @@ public final class TokenCalculationString extends CalculationString {
         this.insertAtCursor(str);
     }
     
+    public void eraseAtCursor(int n) {
+        for(int i = 0; i < n; i++) {
+            this.eraseAtCursor();
+        }
+    }
+    
     public void eraseAtCursor() {
         try {
             if (this.tokens.size() > 0) {

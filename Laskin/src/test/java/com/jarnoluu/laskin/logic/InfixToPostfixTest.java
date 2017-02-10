@@ -1,4 +1,4 @@
-package com.jarnoluu.laskin.logiikka;
+package com.jarnoluu.laskin.logic;
 
 import com.jarnoluu.laskin.logic.InfixToPostfix;
 import com.jarnoluu.laskin.logic.Parser;

@@ -1,4 +1,4 @@
-package com.jarnoluu.laskin.logiikka;
+package com.jarnoluu.laskin.logic;
 
 import com.jarnoluu.laskin.Util;
 import com.jarnoluu.laskin.logic.Calculator;
@@ -55,6 +55,13 @@ public class CalculatorTest {
         double val = this.calculator.calculate("11%3+2");
 
         assertEquals(4, val, 0.00001);
+    }
+    
+    @Test
+    public void testCalculationBases() throws Exception {
+        double val = this.calculator.calculate("0xff+0o12+0b101");
+
+        assertEquals(270, val, 0.00001);
     }
     
     @Test
