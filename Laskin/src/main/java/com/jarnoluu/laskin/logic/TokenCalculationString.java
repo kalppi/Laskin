@@ -7,7 +7,7 @@ import java.util.function.Function;
 import org.javatuples.Pair;
 
 /**
- *
+ * Luokka joka kuvaa laskulauseketta, jossa voidaan liikkua tokenista toiseen yhden merkin sijasta.
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public final class TokenCalculationString extends CalculationString {    
@@ -47,6 +47,10 @@ public final class TokenCalculationString extends CalculationString {
         return false;
     }
     
+    /**
+     * Muuntaa kursorin kohdalla olevan numeron toiseen lukujärjestelmään.
+     * @param to lukujärjestelmän nimi (bin/oct/hex/dec)
+     */
     public void convertAtCursor(String to) {
         List<Pair<Function<String, Boolean>, Function<String, String>>> conv = this.getConversions().get(to);
         
@@ -63,6 +67,9 @@ public final class TokenCalculationString extends CalculationString {
         this.fireCalculationChangeEvent();
     }
     
+    /**
+     * Muuntaa kursorin kohdalla olevan luvun positiivisesta negatiiviseen ja päinvastoin.
+     */
     public void negateAtCursor() {
         if (this.tokens.size() > 0) {
             Token t = this.tokens.get(this.tokens.size() - 1 - this.cursor);
@@ -75,6 +82,10 @@ public final class TokenCalculationString extends CalculationString {
         }
     }
     
+    /**
+     * Korvaa koko lausekkeen sisällön toisella.
+     * @param str 
+     */
     public void replaceWith(String str) {
         this.clear();
         this.cursor = 0;
@@ -82,12 +93,19 @@ public final class TokenCalculationString extends CalculationString {
         this.insertAtCursor(str);
     }
     
+    /**
+     * Poistaa kursorin kohdalta merkkejä.
+     * @param n poistettavien merkkien määrä
+     */
     public void eraseAtCursor(int n) {
         for(int i = 0; i < n; i++) {
             this.eraseAtCursor();
         }
     }
     
+    /**
+     * Poistaa kursorin kohdalta yhden merkin.
+     */
     public void eraseAtCursor() {
         try {
             if (this.tokens.size() > 0) {
@@ -121,6 +139,11 @@ public final class TokenCalculationString extends CalculationString {
         }
     }
     
+    /**
+     * Lisää lausekkeeseen kursorin kohdalle merkkijonon
+     * @param str lisättävä merkkijono
+     * @return onnistuiko lisäys
+     */
     public boolean insertAtCursor(String str) {
         for (char c : str.toCharArray()) {
             if (!this.insert(c, false)) {
@@ -133,6 +156,11 @@ public final class TokenCalculationString extends CalculationString {
         return true;
     }
     
+    /**
+     * Lisää lausekkeeseen kursorin kohdalle yhden merkin.
+     * @param c lisättävä merkki
+     * @return onnistuiko lisäys
+     */
     public boolean insertAtCursor(char c) {
         return this.insert(c, true);
     }

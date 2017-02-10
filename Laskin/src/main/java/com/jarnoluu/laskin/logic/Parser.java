@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.function.Function;
 
 /**
- *
+ * Luokka joka hoitaa tekstimuotoisen laskun muuttamisen tokeneiksi.
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Parser {
@@ -90,6 +90,14 @@ public class Parser {
         }
     }
     
+    /**
+     * Muuntaa merkkijonopohjaisen laskulausekkeen listaksi tokeneja.
+     * @param input laskulauseke merkkijonona
+     * @param checkBrackets sallitaanko parittomat sulut
+     * @param allowUnknown sallitaanko tuntemattomat merkit
+     * @return lista tokeneja
+     * @throws LaskinParseException 
+     */
     public static LinkedList<Token> tokenize(String input, boolean checkBrackets, boolean allowUnknown) throws LaskinParseException {
         input = Parser.removeWhiteSpace(input);
         input = input.toLowerCase();

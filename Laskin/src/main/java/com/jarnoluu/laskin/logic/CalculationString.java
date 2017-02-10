@@ -15,7 +15,7 @@ import java.util.function.Function;
 import org.javatuples.Pair;
 
 /**
- *
+ * Luokka joka kuvaa laskulauseketta.
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public abstract class CalculationString {
@@ -123,6 +123,10 @@ public abstract class CalculationString {
         });
     }
     
+    /**
+     * Laskee lausekkeen tuloksen.
+     * @return Lausekkeen tulos
+     */
     public double calculate() {
         try {
             Double old = this.calculator.getLastValue();
@@ -140,6 +144,11 @@ public abstract class CalculationString {
         return 0;
     }
     
+    
+    /**
+     * Siirtää lausekkeen sisäistä kursoria.
+     * @param s Kursorin paikka. 0 = oikea laita, 1 = siitä yksi vasemmalle jne.
+     */
     public void setCursor(int s) {
         this.cursor = s;
     }

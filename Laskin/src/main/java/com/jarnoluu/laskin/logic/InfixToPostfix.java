@@ -1,12 +1,10 @@
 package com.jarnoluu.laskin.logic;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
 
 /**
- *
+ * Apuluokka infix muotoisen laskulausekkeen muuttamisen postfix (reverse polish) muotoon.
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class InfixToPostfix {
@@ -44,21 +42,16 @@ public class InfixToPostfix {
     
     
     /**
-     * Converts tokenized calculation from infix notation to
-     * postfix (reverse polish) notation using Shunting-yard algorithm.
+     * Muuttaa listan tokeneja postfix muotoon Shunting-yard algoritmia käyttäen.
      * 
-     * @param infix List of tokens in infix notation
-     * @return List of tokens in postfix notation
+     * @param infix Infix muotoinen lista tokeneja
+     * @return postfix muotoinen lista tokeneja
      */
-    
     public static LinkedList<Token> transform(LinkedList<Token> infix) {
         LinkedList<Token> output = new LinkedList();
         Stack<Token> stack = new Stack();
         
         for (Token t : infix) {
-        /*while (infix.size() > 0) {
-            Token t = infix.remove(0);*/
-            
             switch (t.getType()) {
                 case NUMBER:
                 case NUMBER_HEX:

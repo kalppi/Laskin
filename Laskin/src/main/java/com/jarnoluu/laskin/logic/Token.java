@@ -3,7 +3,7 @@ package com.jarnoluu.laskin.logic;
 import java.util.List;
 
 /**
- *
+ * Luokalla kuvataan laskun merkkejä ja numeroja.
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Token {
@@ -48,6 +48,12 @@ public class Token {
         return data;
     }
     
+    /**
+     * Apumetodi joka toimii kuin String.join, mutta listoille tokeneja
+     * @param delimeter välimerkki
+     * @param tokens lista tokeneja
+     * @return yhdistetty merkkijono
+     */
     public static String join(CharSequence delimeter, List<Token> tokens) {
         StringBuilder s = new StringBuilder();
         
@@ -89,6 +95,10 @@ public class Token {
         return text;
     }
     
+    /**
+     * Muuntaa merkkijonoksi, mutta muuttaa jotkin merkit "nätimmäksi".
+     * @return tokeni nättinä merkkijonona
+     */
     public String toPrettyString() {
         String text = this.toString();
         

@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 /**
- *
+ * Luokka, joka hoitaa laskujen laskemisen.
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Calculator {
@@ -49,6 +49,14 @@ public class Calculator {
         }
     }
     
+    /**
+     * Laskee lausekkeen tuloksen.
+     * @param input laskulauseke merkkijonona
+     * @return tulos
+     * @throws LaskinInvalidArgumentException
+     * @throws LaskinParseException
+     * @throws LaskinCalculationException 
+     */
     public double calculate(String input) throws LaskinInvalidArgumentException, LaskinParseException, LaskinCalculationException {
         if (input == null || input.length() == 0) {
             throw new LaskinInvalidArgumentException("Empty input");
@@ -59,6 +67,14 @@ public class Calculator {
         return this.calculate(tokens);
     }
     
+    /**
+     * Laskee lausekkeen tuloksen.
+     * @param tokens laskulauseke listana tokeneja
+     * @return tulos
+     * @throws LaskinInvalidArgumentException
+     * @throws LaskinParseException
+     * @throws LaskinCalculationException 
+     */
     public double calculate(LinkedList<Token> tokens) throws LaskinInvalidArgumentException, LaskinParseException, LaskinCalculationException {
         tokens = InfixToPostfix.transform(tokens);
         
