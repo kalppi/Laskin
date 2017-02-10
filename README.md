@@ -9,5 +9,3 @@ Helppokäyttöinen ja käytännöllinen laskin.
 [pit-raportti](https://htmlpreview.github.io/?https://github.com/kalppi/Laskin/blob/master/dokumentaatio/pit-raportti/201702021650/index.html)
 
 [CheckStyle-raportti](https://htmlpreview.github.io/?https://github.com/kalppi/Laskin/blob/master/dokumentaatio/checkstyle-raportti/site/checkstyle.html)
-
-<sup>CheckStyle huomio: otin vapauden pistää `AvoidNestedBlocks`-moduulin `allowInSwitchCase` asetuksen päälle, koska se on mielestäni järkevää.</sup>
