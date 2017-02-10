@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 12,
+      <title>File: 28,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logiikka.Token.java">com/jarnoluu/laskin/logiikka/Token.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.control.FancyLabelSkin.java">com/jarnoluu/laskin/ui/control/FancyLabelSkin.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.UIManager.java">com/jarnoluu/laskin/ui/UIManager.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.events.CalculationStringErrorStateChangeEvent.java">com/jarnoluu/laskin/ui/events/CalculationStringErrorStateChangeEvent.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.Laskin.java">com/jarnoluu/laskin/Laskin.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.GUIController.java">com/jarnoluu/laskin/ui/GUIController.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logiikka.InfixToPostfix.java">com/jarnoluu/laskin/logiikka/InfixToPostfix.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.control.FancyLabelBehaviorEditable.java">com/jarnoluu/laskin/ui/control/FancyLabelBehaviorEditable.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.TextUI.java">com/jarnoluu/laskin/ui/TextUI.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logic.TokenCalculationString.java">com/jarnoluu/laskin/logic/TokenCalculationString.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logiikka.ScriptManager.java">com/jarnoluu/laskin/logiikka/ScriptManager.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.Util.java">com/jarnoluu/laskin/Util.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logiikka.Parser.java">com/jarnoluu/laskin/logiikka/Parser.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logic.Calculator.java">com/jarnoluu/laskin/logic/Calculator.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logiikka.Calculator.java">com/jarnoluu/laskin/logiikka/Calculator.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logic.Parser.java">com/jarnoluu/laskin/logic/Parser.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,63 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.exceptions.LaskinScriptException.java">com/jarnoluu/laskin/exceptions/LaskinScriptException.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logic.CalculationString.java">com/jarnoluu/laskin/logic/CalculationString.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.events.CalculationStringChangeEvent.java">com/jarnoluu/laskin/ui/events/CalculationStringChangeEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.control.FancyLabel.java">com/jarnoluu/laskin/ui/control/FancyLabel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.GUI.java">com/jarnoluu/laskin/ui/GUI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logic.InfixToPostfix.java">com/jarnoluu/laskin/logic/InfixToPostfix.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.exceptions.LaskinParseException.java">com/jarnoluu/laskin/exceptions/LaskinParseException.java</a>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.events.CalculationStringCalculateEvent.java">com/jarnoluu/laskin/ui/events/CalculationStringCalculateEvent.java</a>
                 </td>
                 <td>
                   0
@@ -201,6 +257,174 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.UI.java">com/jarnoluu/laskin/ui/UI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.io.FileManager.java">com/jarnoluu/laskin/io/FileManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.UIManager.java">com/jarnoluu/laskin/ui/UIManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.TextUI.java">com/jarnoluu/laskin/ui/TextUI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.exceptions.LaskinParseException.java">com/jarnoluu/laskin/exceptions/LaskinParseException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.scripting.ScriptManager.java">com/jarnoluu/laskin/scripting/ScriptManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.ui.control.IFancyLabelBehavior.java">com/jarnoluu/laskin/ui/control/IFancyLabelBehavior.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.exceptions.LaskinInvalidArgumentException.java">com/jarnoluu/laskin/exceptions/LaskinInvalidArgumentException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logic.History.java">com/jarnoluu/laskin/logic/History.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.scripting.ScriptAPI.java">com/jarnoluu/laskin/scripting/ScriptAPI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.Laskin.java">com/jarnoluu/laskin/Laskin.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.logic.Token.java">com/jarnoluu/laskin/logic/Token.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.jarnoluu.laskin.exceptions.LaskinScriptException.java">com/jarnoluu/laskin/exceptions/LaskinScriptException.java</a>
                 </td>
                 <td>
                   0
