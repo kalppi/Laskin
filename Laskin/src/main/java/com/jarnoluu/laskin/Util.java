@@ -87,7 +87,11 @@ public class Util {
     public static String formatSimple(Double val) {
         // Format the value so that it loses its trailing zeros (e.g. 123.0 -> 123)
         DecimalFormat format = new DecimalFormat("0.#####");
-        return format.format(val).replace(",", ".");
+        DecimalFormatSymbols symbols = format.getDecimalFormatSymbols();
+        symbols.setDecimalSeparator('.');
+        symbols.setGroupingSeparator(' ');
+        format.setDecimalFormatSymbols(symbols);
+        return format.format(val);
     }
 
     public static String formatValue(Double val) {
