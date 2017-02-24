@@ -104,7 +104,7 @@ public class FancyLabelBehaviorEditable implements IFancyLabelBehavior {
 
     @Override
     public void onKeyTyped(KeyEvent event) {
-        if (Util.validChar(event.getCharacter().charAt(0))) {
+        if (Util.isValidChar(event.getCharacter().charAt(0))) {
             this.label.getCalculation().insertAtCursor(event.getCharacter().charAt(0));
         }
     }

@@ -1,6 +1,5 @@
 package com.jarnoluu.laskin.ui;
 
-import com.jarnoluu.laskin.ui.control.FancyLabelSkin;
 import com.jarnoluu.laskin.ui.control.FancyLabel;
 import com.jarnoluu.laskin.Util;
 import com.jarnoluu.laskin.logic.CalculationString;
@@ -10,7 +9,6 @@ import javafx.css.PseudoClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
 import com.jarnoluu.laskin.ui.control.IFancyLabelBehavior;
 import com.jarnoluu.laskin.ui.control.FancyLabelBehaviorEditable;
 import javafx.scene.Scene;

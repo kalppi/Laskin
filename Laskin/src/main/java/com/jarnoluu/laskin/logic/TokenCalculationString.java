@@ -171,7 +171,7 @@ public final class TokenCalculationString extends CalculationString {
     }
        
     private boolean insert(char c, boolean update) {
-        if (!Util.validChar(c)) {
+        if (!Util.isValidChar(c)) {
             return false;
         }
         

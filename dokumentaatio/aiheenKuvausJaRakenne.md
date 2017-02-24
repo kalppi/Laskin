@@ -4,4 +4,11 @@
 
 **Käyttäjät:** Kaikki laskinta tarvitsevat
 
+**Kaikkien käyttäjien toiminnot:**
+- merkkien syöttäminen näppäimistöltä
+- merkkien syöttäminen painelemalla nappeja hiirellä
+- omien funktioiden luominen editorilla
+
 ![Luokkakaavio](luokkakaavio.png)
+
+![Merkin syöttäminen](merkinsyotto.png)

@@ -18,7 +18,7 @@ public class Util {
      * @param c merkki
      * @return onko merkki sallittu.
      */
-    public static boolean validChar(char c) {
+    public static boolean isValidChar(char c) {
         return  (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || Util.VALID.contains(c);
     }
     
