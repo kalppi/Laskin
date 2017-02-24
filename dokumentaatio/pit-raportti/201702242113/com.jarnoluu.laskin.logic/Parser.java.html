@@ -185,7 +185,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''> *</span></pre></td></tr>
+<td class=''><pre><span  class=''> * Luokka joka hoitaa tekstimuotoisen laskun muuttamisen tokeneiksi.</span></pre></td></tr>
 
 
 <tr>
@@ -1424,11 +1424,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    public static LinkedList&#60;Token&#62; tokenize(String input, boolean checkBrackets, boolean allowUnknown) throws LaskinParseException {</span></pre></td></tr>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_94'/>
 94
 </td>
@@ -1438,11 +1438,11 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        input = Parser.removeWhiteSpace(input);</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * Muuntaa merkkijonopohjaisen laskulausekkeen listaksi tokeneja.</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_95'/>
 95
 </td>
@@ -1452,7 +1452,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        input = input.toLowerCase();</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param input laskulauseke merkkijonona</span></pre></td></tr>
 
 
 <tr>
@@ -1466,39 +1466,35 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        </span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param checkBrackets sallitaanko parittomat sulut</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_97'/>
 97
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_97'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_97'></a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>        if (checkBrackets) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @param allowUnknown sallitaanko tuntemattomat merkit</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_98'/>
 98
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_98'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_98'></a>
 <span>
-1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::validateBrackets &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            Parser.validateBrackets(input);</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @return lista tokeneja</span></pre></td></tr>
 
 
 <tr>
@@ -1512,7 +1508,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+<td class=''><pre><span  class=''>     * @throws LaskinParseException </span></pre></td></tr>
 
 
 <tr>
@@ -1526,11 +1522,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        </span></pre></td></tr>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_101'/>
 101
 </td>
@@ -1540,11 +1536,11 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        LinkedList&#60;Token&#62; tokens = new LinkedList();</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public static LinkedList&#60;Token&#62; tokenize(String input, boolean checkBrackets, boolean allowUnknown) throws LaskinParseException {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_102'/>
 102
 </td>
@@ -1554,7 +1550,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        input = Parser.removeWhiteSpace(input);</span></pre></td></tr>
 
 
 <tr>
@@ -1562,21 +1558,17 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_103'/>
 103
 </td>
-<td class='uncertain'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_103'>3</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_103'></a>
 <span>
-1. tokenize : Changed increment from 1 to -1 &rarr; TIMED_OUT<br/>
-2. tokenize : changed conditional boundary &rarr; KILLED<br/>
-3. tokenize : negated conditional &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='uncertain'>        for (int i = 0; i &#60; input.length(); i++) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        input = input.toLowerCase();</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_104'/>
 104
 </td>
@@ -1586,7 +1578,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>            char c = input.charAt(i);</span></pre></td></tr>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
 
 
 <tr>
@@ -1594,13 +1586,15 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_105'/>
 105
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_105'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_105'>1</a>
 <span>
+1. tokenize : negated conditional &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class='covered'><pre><span  class=''>            char next = 0;</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>        if (checkBrackets) {</span></pre></td></tr>
 
 
 <tr>
@@ -1610,31 +1604,27 @@ body{
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_106'>3</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_106'>1</a>
 <span>
-1. tokenize : changed conditional boundary &rarr; KILLED<br/>
-2. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
-3. tokenize : negated conditional &rarr; KILLED<br/>
+1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::validateBrackets &rarr; KILLED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            if (i &#60; input.length() - 1) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            Parser.validateBrackets(input);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_107'/>
 107
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_107'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_107'></a>
 <span>
-1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                next = input.charAt(i + 1);</span></pre></td></tr>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
 
 
 <tr>
@@ -1648,11 +1638,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_109'/>
 109
 </td>
@@ -1662,44 +1652,43 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>            </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        LinkedList&#60;Token&#62; tokens = new LinkedList();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_110'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
 
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_110'/>
-110
-</td>
-<td class='killed'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_110'>4</a>
-<span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
-2. tokenize : negated conditional &rarr; KILLED<br/>
-3. tokenize : negated conditional &rarr; KILLED<br/>
-4. tokenize : negated conditional &rarr; KILLED<br/>
-
-</span>
-</td>
-<td class='covered'><pre><span  class='killed'>            if (c == &#39;0&#39; &#38;&#38; (next == &#39;x&#39; || next == &#39;b&#39; || next == &#39;o&#39;)) {</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_111'/>
 111
 </td>
-<td class=''>
+<td class='uncertain'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_111'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_111'>3</a>
 <span>
+1. tokenize : Changed increment from 1 to -1 &rarr; TIMED_OUT<br/>
+2. tokenize : changed conditional boundary &rarr; KILLED<br/>
+3. tokenize : negated conditional &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class=''><pre><span  class=''>                Function&#60;Character, Boolean&#62; f;</span></pre></td></tr>
+<td class='covered'><pre><span  class='uncertain'>        for (int i = 0; i &#60; input.length(); i++) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_112'/>
 112
 </td>
@@ -1709,7 +1698,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>            char c = input.charAt(i);</span></pre></td></tr>
 
 
 <tr>
@@ -1723,21 +1712,25 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                switch (next) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>            char next = 0;</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_114'/>
 114
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_114'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_114'>3</a>
 <span>
+1. tokenize : changed conditional boundary &rarr; KILLED<br/>
+2. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
+3. tokenize : negated conditional &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class=''><pre><span  class=''>                    case &#39;x&#39;:</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            if (i &#60; input.length() - 1) {</span></pre></td></tr>
 
 
 <tr>
@@ -1745,17 +1738,19 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_115'/>
 115
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_115'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_115'>1</a>
 <span>
+1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        f = Parser::isHexSymbol;</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>                next = input.charAt(i + 1);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_116'/>
 116
 </td>
@@ -1765,7 +1760,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
 
 
 <tr>
@@ -1779,7 +1774,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                    case &#39;b&#39;:</span></pre></td></tr>
+<td class=''><pre><span  class=''>            </span></pre></td></tr>
 
 
 <tr>
@@ -1787,17 +1782,22 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_118'/>
 118
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_118'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_118'>4</a>
 <span>
+1. tokenize : negated conditional &rarr; KILLED<br/>
+2. tokenize : negated conditional &rarr; KILLED<br/>
+3. tokenize : negated conditional &rarr; KILLED<br/>
+4. tokenize : negated conditional &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        f = Parser::isBinarySymbol;</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            if (c == &#39;0&#39; &#38;&#38; (next == &#39;x&#39; || next == &#39;b&#39; || next == &#39;o&#39;)) {</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_119'/>
 119
 </td>
@@ -1807,7 +1807,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
+<td class=''><pre><span  class=''>                Function&#60;Character, Boolean&#62; f;</span></pre></td></tr>
 
 
 <tr>
@@ -1821,7 +1821,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                    default:</span></pre></td></tr>
+<td class=''><pre><span  class=''>                </span></pre></td></tr>
 
 
 <tr>
@@ -1835,7 +1835,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        f = Parser::isOctalSymbol;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                switch (next) {</span></pre></td></tr>
 
 
 <tr>
@@ -1849,11 +1849,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                        break;</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    case &#39;x&#39;:</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_123'/>
 123
 </td>
@@ -1863,11 +1863,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        f = Parser::isHexSymbol;</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_124'/>
 124
 </td>
@@ -1877,23 +1877,21 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_125'/>
 125
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_125'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_125'></a>
 <span>
-1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                String number = Parser.collect(input, i + 1, f);</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    case &#39;b&#39;:</span></pre></td></tr>
 
 
 <tr>
@@ -1901,16 +1899,13 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_126'/>
 126
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_126'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_126'></a>
 <span>
-1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
-2. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                i += number.length() + 1;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        f = Parser::isBinarySymbol;</span></pre></td></tr>
 
 
 <tr>
@@ -1924,7 +1919,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                number = String.valueOf(c) + next + number;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
 
 
 <tr>
@@ -1938,7 +1933,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                </span></pre></td></tr>
+<td class=''><pre><span  class=''>                    default:</span></pre></td></tr>
 
 
 <tr>
@@ -1952,7 +1947,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                switch (next) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        f = Parser::isOctalSymbol;</span></pre></td></tr>
 
 
 <tr>
@@ -1966,11 +1961,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                    case &#39;x&#39;:</span></pre></td></tr>
+<td class=''><pre><span  class=''>                        break;</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_131'/>
 131
 </td>
@@ -1980,11 +1975,11 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.NUMBER_HEX, number));</span></pre></td></tr>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_132'/>
 132
 </td>
@@ -1994,21 +1989,23 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
+<td class=''><pre><span  class=''>                </span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_133'/>
 133
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_133'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_133'>1</a>
 <span>
+1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class=''><pre><span  class=''>                    case &#39;b&#39;:</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>                String number = Parser.collect(input, i + 1, f);</span></pre></td></tr>
 
 
 <tr>
@@ -2016,13 +2013,16 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_134'/>
 134
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_134'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_134'>2</a>
 <span>
+1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
+2. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.NUMBER_BIN, number));</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>                i += number.length() + 1;</span></pre></td></tr>
 
 
 <tr>
@@ -2036,7 +2036,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                number = String.valueOf(c) + next + number;</span></pre></td></tr>
 
 
 <tr>
@@ -2050,7 +2050,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                    default:</span></pre></td></tr>
+<td class=''><pre><span  class=''>                </span></pre></td></tr>
 
 
 <tr>
@@ -2064,7 +2064,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.NUMBER_OCT, number));</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                switch (next) {</span></pre></td></tr>
 
 
 <tr>
@@ -2078,11 +2078,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                        break;</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    case &#39;x&#39;:</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_139'/>
 139
 </td>
@@ -2092,7 +2092,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.NUMBER_HEX, number));</span></pre></td></tr>
 
 
 <tr>
@@ -2100,19 +2100,17 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_140'/>
 140
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_140'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_140'></a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;.&#39;) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_141'/>
 141
 </td>
@@ -2122,7 +2120,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                String number = Parser.collect(input, i, Parser::isNumberOrDecimalSeparatorSymbol);</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    case &#39;b&#39;:</span></pre></td></tr>
 
 
 <tr>
@@ -2130,19 +2128,17 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_142'/>
 142
 </td>
-<td class='uncertain'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_142'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_142'></a>
 <span>
-1. tokenize : Replaced integer addition with subtraction &rarr; TIMED_OUT<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='uncertain'>                i += number.length();</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.NUMBER_BIN, number));</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_143'/>
 143
 </td>
@@ -2152,11 +2148,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        break;</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_144'/>
 144
 </td>
@@ -2166,11 +2162,11 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                number = &#34;0.&#34; + number;</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    default:</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_145'/>
 145
 </td>
@@ -2180,23 +2176,21 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.NUMBER_OCT, number));</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_146'/>
 146
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_146'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_146'></a>
 <span>
-1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                Parser.checkDecimals(number);</span></pre></td></tr>
+<td class=''><pre><span  class=''>                        break;</span></pre></td></tr>
 
 
 <tr>
@@ -2210,7 +2204,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                </span></pre></td></tr>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
 
 
 <tr>
@@ -2218,13 +2212,15 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_148'/>
 148
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_148'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_148'>1</a>
 <span>
+1. tokenize : negated conditional &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.NUMBER, number));</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;.&#39;) {</span></pre></td></tr>
 
 
 <tr>
@@ -2232,15 +2228,13 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_149'/>
 149
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_149'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_149'></a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            } else if (Parser.isNumberSymbol(c)) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                String number = Parser.collect(input, i, Parser::isNumberOrDecimalSeparatorSymbol);</span></pre></td></tr>
 
 
 <tr>
@@ -2248,32 +2242,29 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_150'/>
 150
 </td>
-<td class='killed'>
+<td class='uncertain'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_150'>1</a>
 <span>
-1. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
+1. tokenize : Replaced integer addition with subtraction &rarr; TIMED_OUT<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                String number = Parser.collect(input, i - 1, Parser::isNumberOrDecimalSeparatorSymbol);</span></pre></td></tr>
+<td class='covered'><pre><span  class='uncertain'>                i += number.length();</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_151'/>
 151
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_151'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_151'></a>
 <span>
-1. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
-2. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                i += number.length() - 1;</span></pre></td></tr>
+<td class=''><pre><span  class=''>                </span></pre></td></tr>
 
 
 <tr>
@@ -2281,15 +2272,13 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_152'/>
 152
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_152'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_152'></a>
 <span>
-1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                Parser.checkDecimals(number);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                number = &#34;0.&#34; + number;</span></pre></td></tr>
 
 
 <tr>
@@ -2311,9 +2300,39 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_154'/>
 154
 </td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_154'>1</a>
+<span>
+1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                Parser.checkDecimals(number);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_155'/>
+155
+</td>
 <td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_154'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_155'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_156'></a>
 <span>
 </span>
 </td>
@@ -2322,12 +2341,105 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_155'/>
-155
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_157'/>
+157
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_155'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_157'>1</a>
+<span>
+1. tokenize : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            } else if (Parser.isNumberSymbol(c)) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_158'/>
+158
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_158'>1</a>
+<span>
+1. tokenize : Replaced integer subtraction with addition &rarr; TIMED_OUT<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>                String number = Parser.collect(input, i - 1, Parser::isNumberOrDecimalSeparatorSymbol);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_159'/>
+159
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_159'>2</a>
+<span>
+1. tokenize : Replaced integer addition with subtraction &rarr; TIMED_OUT<br/>
+2. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>                i += number.length() - 1;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_160'/>
+160
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_160'>1</a>
+<span>
+1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                Parser.checkDecimals(number);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_161'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_162'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.NUMBER, number));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_163'/>
+163
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_163'>1</a>
 <span>
 1. tokenize : negated conditional &rarr; KILLED<br/>
 
@@ -2338,12 +2450,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_156'/>
-156
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_164'/>
+164
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_156'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_164'>1</a>
 <span>
 1. tokenize : negated conditional &rarr; KILLED<br/>
 
@@ -2354,12 +2466,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_157'/>
-157
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_165'/>
+165
 </td>
 <td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_157'>4</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_165'>4</a>
 <span>
 1. tokenize : changed conditional boundary &rarr; SURVIVED<br/>
 2. tokenize : Replaced integer subtraction with addition &rarr; SURVIVED<br/>
@@ -2373,12 +2485,12 @@ body{
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_158'/>
-158
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_166'/>
+166
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_158'>5</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_166'>5</a>
 <span>
 1. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
 2. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
@@ -2393,122 +2505,6 @@ body{
 
 <tr>
 <td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_159'/>
-159
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_159'></a>
-<span>
-</span>
-</td>
-<td class=''><pre><span  class=''>                    </span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_160'/>
-160
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_160'></a>
-<span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>                    String number = Parser.collect(input, i, Parser::isNumberOrDecimalSeparatorSymbol);</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_161'/>
-161
-</td>
-<td class='killed'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_161'>1</a>
-<span>
-1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
-
-</span>
-</td>
-<td class='covered'><pre><span  class='killed'>                    i += number.length();</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_162'/>
-162
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_162'></a>
-<span>
-</span>
-</td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_163'/>
-163
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_163'></a>
-<span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>                    number = String.valueOf(c) + number;</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_164'/>
-164
-</td>
-<td class='survived'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_164'>1</a>
-<span>
-1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; SURVIVED<br/>
-
-</span>
-</td>
-<td class='covered'><pre><span  class='survived'>                    Parser.checkDecimals(number);</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_165'/>
-165
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_165'></a>
-<span>
-</span>
-</td>
-<td class=''><pre><span  class=''>                    </span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_166'/>
-166
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_166'></a>
-<span>
-</span>
-</td>
-<td class='covered'><pre><span  class=''>                    tokens.add(new Token(Token.Type.NUMBER, number));</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_167'/>
 167
 </td>
@@ -2518,7 +2514,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                } else {</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    </span></pre></td></tr>
 
 
 <tr>
@@ -2532,37 +2528,37 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                    tokens.add(new Token(Token.Type.OPER, String.valueOf(c)));</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_169'/>
-169
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_169'></a>
-<span>
-</span>
-</td>
-<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                    String number = Parser.collect(input, i, Parser::isNumberOrDecimalSeparatorSymbol);</span></pre></td></tr>
 
 
 <tr>
 <td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_170'/>
-170
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_169'/>
+169
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_170'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_169'>1</a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
+1. tokenize : Replaced integer addition with subtraction &rarr; KILLED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;(&#39;) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>                    i += number.length();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_170'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -2576,7 +2572,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.BRACKET_START));</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                    number = String.valueOf(c) + number;</span></pre></td></tr>
 
 
 <tr>
@@ -2584,19 +2580,19 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_172'/>
 172
 </td>
-<td class='killed'>
+<td class='survived'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_172'>1</a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
+1. tokenize : removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; SURVIVED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            }  else if (c == &#39;)&#39;) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>                    Parser.checkDecimals(number);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_173'/>
 173
 </td>
@@ -2606,7 +2602,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.BRACKET_END));</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    </span></pre></td></tr>
 
 
 <tr>
@@ -2614,15 +2610,13 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_174'/>
 174
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_174'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_174'></a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;,&#39;) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                    tokens.add(new Token(Token.Type.NUMBER, number));</span></pre></td></tr>
 
 
 <tr>
@@ -2636,7 +2630,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.COMMA));</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                } else {</span></pre></td></tr>
 
 
 <tr>
@@ -2644,19 +2638,17 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_176'/>
 176
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_176'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_176'></a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;$&#39;) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                    tokens.add(new Token(Token.Type.OPER, String.valueOf(c)));</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_177'/>
 177
 </td>
@@ -2666,7 +2658,7 @@ body{
 <span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>                tokens.add(new Token(Token.Type.SPECIAL, &#34;$&#34;));</span></pre></td></tr>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
 
 
 <tr>
@@ -2674,15 +2666,15 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_178'/>
 178
 </td>
-<td class='uncertain'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_178'>1</a>
 <span>
-1. tokenize : negated conditional &rarr; TIMED_OUT<br/>
+1. tokenize : negated conditional &rarr; KILLED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='uncertain'>            } else if (Parser.isLetterSymbol(c)) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;(&#39;) {</span></pre></td></tr>
 
 
 <tr>
@@ -2690,15 +2682,13 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_179'/>
 179
 </td>
-<td class='uncertain'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_179'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_179'></a>
 <span>
-1. tokenize : Replaced integer subtraction with addition &rarr; TIMED_OUT<br/>
-
 </span>
 </td>
-<td class='covered'><pre><span  class='uncertain'>                String str = Parser.collect(input, i - 1, Parser::isLetterSymbol);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.BRACKET_START));</span></pre></td></tr>
 
 
 <tr>
@@ -2706,20 +2696,19 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_180'/>
 180
 </td>
-<td class='uncertain'>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_180'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_180'>1</a>
 <span>
-1. tokenize : Replaced integer addition with subtraction &rarr; TIMED_OUT<br/>
-2. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
+1. tokenize : negated conditional &rarr; KILLED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='uncertain'>                i += str.length() - 1;</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            }  else if (c == &#39;)&#39;) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_181'/>
 181
 </td>
@@ -2729,7 +2718,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.BRACKET_END));</span></pre></td></tr>
 
 
 <tr>
@@ -2737,19 +2726,19 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_182'/>
 182
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_182'>1</a>
 <span>
-1. tokenize : negated conditional &rarr; SURVIVED<br/>
+1. tokenize : negated conditional &rarr; KILLED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>                switch (str) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;,&#39;) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_183'/>
 183
 </td>
@@ -2759,21 +2748,23 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                    case &#34;pi&#34;:</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                tokens.add(new Token(Token.Type.COMMA));</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_184'/>
 184
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_184'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_184'>1</a>
 <span>
+1. tokenize : negated conditional &rarr; KILLED<br/>
+
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.SPECIAL, &#34;pi&#34;));</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            } else if (c == &#39;$&#39;) {</span></pre></td></tr>
 
 
 <tr>
@@ -2787,21 +2778,23 @@ body{
 <span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>                        break;</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>                tokens.add(new Token(Token.Type.SPECIAL, &#34;$&#34;));</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_186'/>
 186
 </td>
-<td class=''>
+<td class='uncertain'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_186'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_186'>1</a>
 <span>
+1. tokenize : negated conditional &rarr; TIMED_OUT<br/>
+
 </span>
 </td>
-<td class=''><pre><span  class=''>                    default:</span></pre></td></tr>
+<td class='covered'><pre><span  class='uncertain'>            } else if (Parser.isLetterSymbol(c)) {</span></pre></td></tr>
 
 
 <tr>
@@ -2809,31 +2802,36 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_187'/>
 187
 </td>
-<td class=''>
+<td class='uncertain'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_187'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_187'>1</a>
 <span>
+1. tokenize : Replaced integer subtraction with addition &rarr; TIMED_OUT<br/>
+
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.FUNC, str));</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_188'/>
-188
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_188'></a>
-<span>
-</span>
-</td>
-<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+<td class='covered'><pre><span  class='uncertain'>                String str = Parser.collect(input, i - 1, Parser::isLetterSymbol);</span></pre></td></tr>
 
 
 <tr>
 <td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_188'/>
+188
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_188'>2</a>
+<span>
+1. tokenize : Replaced integer addition with subtraction &rarr; TIMED_OUT<br/>
+2. tokenize : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>                i += str.length() - 1;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_189'/>
 189
 </td>
@@ -2843,7 +2841,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>            } else {</span></pre></td></tr>
+<td class=''><pre><span  class=''>                </span></pre></td></tr>
 
 
 <tr>
@@ -2851,19 +2849,19 @@ body{
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_190'/>
 190
 </td>
-<td class='killed'>
+<td class='survived'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_190'>1</a>
 <span>
-1. tokenize : negated conditional &rarr; KILLED<br/>
+1. tokenize : negated conditional &rarr; SURVIVED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>                if (allowUnknown) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>                switch (str) {</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_191'/>
 191
 </td>
@@ -2873,11 +2871,11 @@ body{
 <span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>                    tokens.add(new Token(Token.Type.UNKNOWN, String.valueOf(c)));</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    case &#34;pi&#34;:</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='uncovered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_192'/>
 192
 </td>
@@ -2887,11 +2885,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                } else {</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.SPECIAL, &#34;pi&#34;));</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='uncovered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_193'/>
 193
 </td>
@@ -2901,7 +2899,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                    throw new LaskinParseException(&#34;Unknown character (&#34; + c + &#34;)&#34;);</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>                        break;</span></pre></td></tr>
 
 
 <tr>
@@ -2915,11 +2913,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+<td class=''><pre><span  class=''>                    default:</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_195'/>
 195
 </td>
@@ -2929,7 +2927,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                        tokens.add(new Token(Token.Type.FUNC, str));</span></pre></td></tr>
 
 
 <tr>
@@ -2943,11 +2941,11 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_197'/>
 197
 </td>
@@ -2957,7 +2955,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        </span></pre></td></tr>
+<td class='covered'><pre><span  class=''>            } else {</span></pre></td></tr>
 
 
 <tr>
@@ -2969,15 +2967,15 @@ body{
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_198'>1</a>
 <span>
-1. tokenize : mutated return of Object value for com/jarnoluu/laskin/logic/Parser::tokenize to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+1. tokenize : negated conditional &rarr; KILLED<br/>
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>        return tokens;</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>                if (allowUnknown) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='uncovered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_199'/>
 199
 </td>
@@ -2987,7 +2985,7 @@ body{
 <span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>                    tokens.add(new Token(Token.Type.UNKNOWN, String.valueOf(c)));</span></pre></td></tr>
 
 
 <tr>
@@ -2998,6 +2996,120 @@ body{
 <td class=''>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_200'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                } else {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_201'/>
+201
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_201'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    throw new LaskinParseException(&#34;Unknown character (&#34; + c + &#34;)&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_202'/>
+202
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_202'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_203'/>
+203
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_203'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_204'/>
+204
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_204'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_205'/>
+205
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_205'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_206'/>
+206
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_206'>1</a>
+<span>
+1. tokenize : mutated return of Object value for com/jarnoluu/laskin/logic/Parser::tokenize to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return tokens;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_207'/>
+207
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_207'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_208'/>
+208
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_208'></a>
 <span>
 </span>
 </td>
@@ -3024,7 +3136,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_21'/> 
 
-<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isNumberOrDecimalSeparatorSymbol<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isNumberOrDecimalSeparatorSymbol<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isNumberOrDecimalSeparatorSymbol<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; TIMED_OUT</p> 
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isNumberOrDecimalSeparatorSymbol<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isNumberOrDecimalSeparatorSymbol<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isNumberOrDecimalSeparatorSymbol<br/><b>Killed by : </b>none</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; TIMED_OUT</p> 
 </td>
 </tr>
 <tr>
@@ -3034,7 +3146,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_25'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isLetterSymbol<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isLetterSymbol<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3074,7 +3186,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_43'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongNumberOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongNumberOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongOrderOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongOrderOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3084,7 +3196,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_45'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3104,7 +3216,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_47'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3134,7 +3246,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_56'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>validateBrackets<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3144,7 +3256,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_62'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>removeWhiteSpace<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongNumberOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::removeWhiteSpace to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>removeWhiteSpace<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongOrderOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::removeWhiteSpace to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3154,7 +3266,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_66'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::tokenize to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::tokenize to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3164,7 +3276,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_72'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> 
 </td>
 </tr>
 <tr>
@@ -3174,7 +3286,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_73'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3194,7 +3306,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_83'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::collect to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>collect<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::collect to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3218,33 +3330,13 @@ body{
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_97'>97</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_105'>105</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_97'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_105'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongNumberOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_98'>98</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_98'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongNumberOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> removed call to com/jarnoluu/laskin/logic/Parser::validateBrackets &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_103'>103</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_103'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; TIMED_OUT</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongOrderOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3254,85 +3346,75 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_106'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testWrongOrderOfBrackets(com.jarnoluu.laskin.logic.ParserTest)</span></span> removed call to com/jarnoluu/laskin/logic/Parser::validateBrackets &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_107'>107</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_111'>111</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_107'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_111'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; TIMED_OUT</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_110'>110</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_114'>114</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_110'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_114'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_125'>125</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_115'>115</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_125'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_115'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_126'>126</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_118'>118</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_126'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_118'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_140'>140</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_133'>133</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_140'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_133'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_142'>142</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_134'>134</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_142'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_134'/> 
 
-<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; TIMED_OUT</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_146'>146</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_148'>148</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_146'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints2(com.jarnoluu.laskin.logic.ParserTest)</span></span> removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_149'>149</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_149'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_148'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
@@ -3344,47 +3426,17 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_150'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> 
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; TIMED_OUT</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_151'>151</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_154'>154</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_151'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_154'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints2(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_152'>152</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_152'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_155'>155</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_155'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_156'>156</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_156'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize5(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints2(com.jarnoluu.laskin.logic.ParserTest)</span></span> removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3394,7 +3446,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_157'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize5(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize5(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3404,17 +3456,37 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_158'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation4(com.jarnoluu.laskin.logic.CalculatorTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; TIMED_OUT</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_161'>161</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_159'>159</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_161'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_159'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize5(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_160'>160</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_160'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest)</span></span> removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_163'>163</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_163'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3424,17 +3496,37 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_164'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; SURVIVED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_170'>170</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_165'>165</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_170'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_165'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_166'>166</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_166'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation4(com.jarnoluu.laskin.logic.CalculatorTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_169'>169</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_169'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3444,27 +3536,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_172'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_174'>174</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_174'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_176'>176</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_176'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> removed call to com/jarnoluu/laskin/logic/Parser::checkDecimals &rarr; SURVIVED</p> 
 </td>
 </tr>
 <tr>
@@ -3474,17 +3546,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_178'/> 
 
-<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_179'>179</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_179'/> 
-
-<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; TIMED_OUT</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3494,7 +3556,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_180'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize3(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; TIMED_OUT</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -3504,7 +3566,47 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_182'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_184'>184</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_184'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_186'>186</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_186'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_187'>187</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_187'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_188'>188</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_188'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testTokenize3(com.jarnoluu.laskin.logic.ParserTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; TIMED_OUT</p> 
 </td>
 </tr>
 <tr>
@@ -3514,7 +3616,7 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_190'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 <tr>
@@ -3524,7 +3626,17 @@ body{
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_198'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::tokenize to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@6ccac6f4_206'>206</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@6ccac6f4_206'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>tokenize<br/><b>Killed by : </b>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest)</span></span> mutated return of Object value for com/jarnoluu/laskin/logic/Parser::tokenize to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
 </td>
 </tr>
 
@@ -3545,7 +3657,7 @@ body{
 
 <h2>Tests examined</h2>
 <ul>
-<li>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints2(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testDecimals(com.jarnoluu.laskin.logic.ParserTest) (3 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testWrongOrderOfBrackets(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculationBases(com.jarnoluu.laskin.logic.CalculatorTest) (37 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testOctalNumber(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation3(com.jarnoluu.laskin.logic.CalculatorTest) (34 ms)</li><li>com.jarnoluu.laskin.logic.InfixToPostfixTest.testInfixToPostfix2(com.jarnoluu.laskin.logic.InfixToPostfixTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation2(com.jarnoluu.laskin.logic.CalculatorTest) (57 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize2(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testWrongNumberOfBrackets(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testError(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (22 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testWhitespace(com.jarnoluu.laskin.logic.ParserTest) (3 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.InfixToPostfixTest.testInfixToPostfix(com.jarnoluu.laskin.logic.InfixToPostfixTest) (4 ms)</li><li>com.jarnoluu.laskin.logic.InfixToPostfixTest.testInfixToPostfix3(com.jarnoluu.laskin.logic.InfixToPostfixTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testInsert(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (20 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testMalformedCalculations(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation(com.jarnoluu.laskin.logic.CalculatorTest) (636 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize3(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest) (2 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testNegate(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (17 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize5(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation4(com.jarnoluu.laskin.logic.CalculatorTest) (47 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation5(com.jarnoluu.laskin.logic.CalculatorTest) (61 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculationFunctions2(com.jarnoluu.laskin.logic.CalculatorTest) (39 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testReplace(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (59 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testErase(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (82 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testMoveCursor(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (16 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculationFunctions1(com.jarnoluu.laskin.logic.CalculatorTest) (58 ms)</li>
+<li>com.jarnoluu.laskin.logic.ParserTest.testBinaryNumber(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints2(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testHexNumber(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testDecimals(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testWrongOrderOfBrackets(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculationBases(com.jarnoluu.laskin.logic.CalculatorTest) (28 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testOctalNumber(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation3(com.jarnoluu.laskin.logic.CalculatorTest) (38 ms)</li><li>com.jarnoluu.laskin.logic.InfixToPostfixTest.testInfixToPostfix2(com.jarnoluu.laskin.logic.InfixToPostfixTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation2(com.jarnoluu.laskin.logic.CalculatorTest) (53 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize2(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTooManyDecimalPoints(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testWrongNumberOfBrackets(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testError(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (31 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testWhitespace(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.InfixToPostfixTest.testInfixToPostfix(com.jarnoluu.laskin.logic.InfixToPostfixTest) (2 ms)</li><li>com.jarnoluu.laskin.logic.InfixToPostfixTest.testInfixToPostfix3(com.jarnoluu.laskin.logic.InfixToPostfixTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testInsert(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (19 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testMalformedCalculations(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation(com.jarnoluu.laskin.logic.CalculatorTest) (751 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize4(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize3(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testNegate(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (25 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testRightNumberOfTokens(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testTokenize5(com.jarnoluu.laskin.logic.ParserTest) (1 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation4(com.jarnoluu.laskin.logic.CalculatorTest) (32 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculation5(com.jarnoluu.laskin.logic.CalculatorTest) (51 ms)</li><li>com.jarnoluu.laskin.logic.ParserTest.testUnknownCharacters2(com.jarnoluu.laskin.logic.ParserTest) (0 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testReplace(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (38 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculationFunctions2(com.jarnoluu.laskin.logic.CalculatorTest) (48 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testErase(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (48 ms)</li><li>com.jarnoluu.laskin.logic.TokenCalculationStringTest.testMoveCursor(com.jarnoluu.laskin.logic.TokenCalculationStringTest) (33 ms)</li><li>com.jarnoluu.laskin.logic.CalculatorTest.testCalculationFunctions1(com.jarnoluu.laskin.logic.CalculatorTest) (34 ms)</li>
 </ul>
 
 <br/>

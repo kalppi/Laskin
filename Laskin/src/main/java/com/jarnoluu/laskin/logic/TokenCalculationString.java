@@ -103,7 +103,7 @@ public final class TokenCalculationString extends CalculationString {
      * @param n poistettavien merkkien määrä
      */
     public void eraseAtCursor(int n) {
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             this.eraseAtCursor();
         }
     }
