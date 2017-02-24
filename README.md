@@ -3,6 +3,7 @@
 Helppokäyttöinen ja käytännöllinen laskin.
 
 **Käyttöohje**
+
 Syötä lauseke joko käyttäen näppäimistöä tai hiirellä nappeja painellen. Enter laskee laskun tuloksen. Nuolinäppäimillä voi vaihtaa valittua lausekkeen osaa.
 
 Mikäli valittuna on numero, voi sen muuntaa toiseen lukujärjestelmään näppäinyhdistelmiä painamalla.
