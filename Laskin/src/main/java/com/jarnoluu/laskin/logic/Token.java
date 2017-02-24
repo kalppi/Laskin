@@ -22,7 +22,14 @@ public class Token {
         EMPTY
     }
     
+    /**
+     * Minkä tyyppinen tokeni on.
+     */
     private final Token.Type type;
+    
+    /**
+     * Tokeniin liittyvä data, esimerkiksi luku tai funktion nimi.
+     */
     private final String data;
     
     public Token(Token t) {

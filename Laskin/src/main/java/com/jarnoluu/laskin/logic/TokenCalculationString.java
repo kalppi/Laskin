@@ -10,17 +10,22 @@ import org.javatuples.Pair;
  * Luokka joka kuvaa laskulauseketta, jossa voidaan liikkua tokenista toiseen yhden merkin sijasta.
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
-public final class TokenCalculationString extends CalculationString {    
+public final class TokenCalculationString extends CalculationString {
+    /**
+     * Lausekkeen pituus.
+     */
     private int length = 0;
     
     public TokenCalculationString(Calculator calc) {
         super(calc);
     }
     
+    @Override
     public int length() {
         return this.tokens.size();
     }
     
+    @Override
     public void clear() {
         this.tokens.clear();
         this.cursor = 0;
@@ -76,7 +81,7 @@ public final class TokenCalculationString extends CalculationString {
             
             if (t.getType() == Token.Type.NUMBER) {
                 Double val = Double.parseDouble(t.getData()) * -1;
-                this.tokens.set(this.tokens.size() - 1 - this.cursor, new Token(Token.Type.NUMBER, Util.formatSimple(val)));
+                this.tokens.set(this.tokens.size() - 1 - this.cursor, new Token(Token.Type.NUMBER, Util.formatValue(val)));
                 this.fireCalculationChangeEvent();
             }
         }

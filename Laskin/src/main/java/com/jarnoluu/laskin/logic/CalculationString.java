@@ -19,15 +19,49 @@ import org.javatuples.Pair;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public abstract class CalculationString {
+    /**
+     * Laskennan hoivata laskin.
+     */
     protected final Calculator calculator;
+    
+    /**
+     * Lausekkeen muodostavat tokenit listana.
+     */
     protected LinkedList<Token> tokens = new LinkedList();
+    
+    /**
+     * Onko lausekeen laskemisessa tullut virhe.
+     */
     protected boolean error = false;
+    
+    /**
+     * Missä kohtaa liikutettava kursori on.
+     */
     protected int cursor = 0;
+    
+    /**
+     * Mikä osa lausekkeesta on valittuna. -1 = ei valintaa.
+     */
     protected int selected = -1;
     
+    /**
+     * Pitää sisällään eri lukujärjestelmämuutoksia hoivat funktiot.
+     */
     private final Map<String, List<Pair<Function<String, Boolean>, Function<String, String>>>> conversions = new HashMap();
+    
+    /**
+     * Lista tapahtumankäsittelijöitä kun lauseke muuttuu.
+     */
     private final List<CalculationStringChangeEvent> events = new LinkedList();
+    
+    /**
+     * Lista tapahtumankäsittelijöitä kun laskemisessa tapahtuu virhe.
+     */
     private final List<CalculationStringErrorStateChangeEvent> onErrorChange = new LinkedList();
+    
+    /**
+     * Lista tapahtumankäsittelijöitä kun lausekkeen laskenta tapahtuu. 
+     */
     private final List<CalculationStringCalculateEvent> onCalculate = new LinkedList();
     
     public CalculationString(Calculator calc) {
@@ -44,9 +78,9 @@ public abstract class CalculationString {
         this.clear();
         
         List<Pair<Function<String, Boolean>, Function<String, String>>> decConv = new LinkedList();
-        decConv.add(Pair.with(Util::isHexNumber, (String s) -> Util.formatSimple(Util.hexToDouble(s))));
-        decConv.add(Pair.with(Util::isBinaryNumber, (String s) -> Util.formatSimple(Util.binToDouble(s))));
-        decConv.add(Pair.with(Util::isOctalNumber, (String s) -> Util.formatSimple(Util.octToDouble(s))));
+        decConv.add(Pair.with(Util::isHexNumber, (String s) -> Util.formatValue(Util.hexToDouble(s))));
+        decConv.add(Pair.with(Util::isBinaryNumber, (String s) -> Util.formatValue(Util.binToDouble(s))));
+        decConv.add(Pair.with(Util::isOctalNumber, (String s) -> Util.formatValue(Util.octToDouble(s))));
         
         List<Pair<Function<String, Boolean>, Function<String, String>>> hexConv = new LinkedList();
         hexConv.add(Pair.with(Util::isIntegerNumber, (String s) -> "0x" + Integer.toHexString(Integer.parseInt(s))));

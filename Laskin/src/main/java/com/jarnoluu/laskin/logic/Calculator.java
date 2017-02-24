@@ -15,9 +15,16 @@ import java.util.Map;
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class Calculator {
+    /**
+     * Pitää sisällään operaattorien funktiot.
+     */
     private final Map<String, String> operators = new HashMap();
+    
     private final ScriptManager scriptManager;
     
+    /**
+     * Edellisen laskun tulos.
+     */
     private double lastValue = 0;
     
     public Calculator() throws LaskinScriptException {

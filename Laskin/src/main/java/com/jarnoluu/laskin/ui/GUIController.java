@@ -101,8 +101,8 @@ public class GUIController {
             return;
         }
         
-        this.calcHistory.getCalculation().replaceWith(this.calc.toString().replaceAll("\\$", Util.formatSimple(old)));
-        this.calc.replaceWith(Util.formatSimple(val));
+        this.calcHistory.getCalculation().replaceWith(this.calc.toString().replaceAll("\\$", Util.formatValue(old)));
+        this.calc.replaceWith(Util.formatValue(val));
 
     }
     

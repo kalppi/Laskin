@@ -5,10 +5,15 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- *
+ * Tietostojen käsittelystä vastaava luokka
  * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
  */
 public class FileManager {
+    /**
+     * Avaa tiedoston
+     * @param path tiedoston sijainti
+     * @return tiedosto luettavana streamina
+     */
     public static InputStream openFileStream(String path) {
         URL url = FileManager.getResource(path);
         
