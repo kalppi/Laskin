@@ -14,4 +14,5 @@
 ![Merkin syöttäminen](merkinsyotto.png)
 
 **Rakennekuvaus**
+
 Ohjelman ydin on GUIController, joka ottaa vastaan käyttäjän nappien painallukset. Käyttäjän syöttämät merkit ohjataan CalculationString luokan oliolle, joka kuvaa käyttäjän syöttämää laskua. Kun käyttäjä syöttää enterin painalluksen, laskee CalculationString Calculator luokkaa hyväksikäyttäen lausekkeen tuloksen. Calculator luokka käyttää Parser ja InfixToPostfix luokkia muokkaamaan tekstimuotoisen laskun helpommin käsiteltävään muotoon.
