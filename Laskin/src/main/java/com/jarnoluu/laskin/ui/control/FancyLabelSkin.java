@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class FancyLabelSkin implements Skin<FancyLabel> {
     private static final int PADDING = 4;

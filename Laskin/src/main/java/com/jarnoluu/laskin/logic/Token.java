@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Luokalla kuvataan laskun merkkejä ja numeroja.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class Token {
     public enum Type {

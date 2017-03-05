@@ -2,7 +2,7 @@ package com.jarnoluu.laskin.scripting;
 
 /**
  * Rajapinta jota skriptifunktiot voivat kutsua.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class ScriptAPI {
     /**
@@ -26,6 +26,7 @@ public class ScriptAPI {
     /**
      * Ilmoittaa funktion haluavan lopettaa suoriuksensa.
      * @param msg syy lopetukselle.
+     * @return palauttaa nollan, jonka kutsuva skripti palauttaa laskimelle.
      */
     public static double terminate(String msg) {
         ScriptAPI.terminated = true;
@@ -33,12 +34,20 @@ public class ScriptAPI {
         return 0.0;
     }
     
+    /**
+     * Kertoo, pysäytettiinkö skripti.
+     * @return pysäytettiinkö skripti.
+     */
     public static boolean getTerminated() {
         boolean t = ScriptAPI.terminated;
         ScriptAPI.terminated = false;
         return t;
     }
     
+    /**
+     * Kertoo pysäytyksen syyn.
+     * @return pysäytyksen syy
+     */
     public static String getTerminatedMessage() {
         return ScriptAPI.terminatedMsg;
     }

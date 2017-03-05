@@ -7,7 +7,7 @@ import javafx.scene.text.Font;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class FancyLabel extends Control {
     private IFancyLabelBehavior behavior;

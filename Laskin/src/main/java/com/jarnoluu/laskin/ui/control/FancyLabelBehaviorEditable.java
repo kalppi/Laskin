@@ -15,7 +15,7 @@ import org.javatuples.Pair;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class FancyLabelBehaviorEditable implements IFancyLabelBehavior {
     private final FancyLabel label;
@@ -37,25 +37,29 @@ public class FancyLabelBehaviorEditable implements IFancyLabelBehavior {
         final KeyCombination kbToDec = new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN);
         final KeyCombination kbToOct = new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN);
         final KeyCombination kbNegate = new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN);
+        final KeyCombination kbFunctionalize = new KeyCodeCombination(KeyCode.F, KeyCombination.CONTROL_DOWN);
         
         this.combinations.addAll(Arrays.asList(
             Pair.with(kbCopy, this::copyToClipboard),
             Pair.with(kbClear, this.calc::clear),
             Pair.with(kbPaste, this::pasteFromClipboard),
             Pair.with(kbToBin, () -> {
-                this.calc.convertAtCursor("bin");
+                this.calc.convertSelected("bin");
             }),
             Pair.with(kbToHex, () -> {
-                this.calc.convertAtCursor("hex");
+                this.calc.convertSelected("hex");
             }),
             Pair.with(kbToDec, () -> {
-                this.calc.convertAtCursor("dec");
+                this.calc.convertSelected("dec");
             }),
             Pair.with(kbToOct, () -> {
-                this.calc.convertAtCursor("oct");
+                this.calc.convertSelected("oct");
             }),
             Pair.with(kbNegate, () -> {
                 this.calc.negateAtCursor();
+            }),
+            Pair.with(kbFunctionalize, () -> {
+                this.calc.functionalizeSelected();
             })
         ));
         

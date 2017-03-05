@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class TextUI implements UI {
     @Override

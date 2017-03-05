@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /**
  * Apuluokka infix muotoisen laskulausekkeen muuttamisen postfix (reverse polish) muotoon.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class InfixToPostfix {
     private InfixToPostfix() {

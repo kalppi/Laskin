@@ -16,7 +16,7 @@ import org.javatuples.Pair;
 
 /**
  * Luokka joka kuvaa laskulauseketta.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public abstract class CalculationString {
     /**
@@ -64,10 +64,19 @@ public abstract class CalculationString {
      */
     private final List<CalculationStringCalculateEvent> onCalculate = new LinkedList();
     
+    /**
+     * Konstruktori.
+     * @param calc laskin jota käytettään laskujen laskemiseen.
+     */
     public CalculationString(Calculator calc) {
         this(calc, null);
     }
     
+    /**
+     * Konstruktori.
+     * @param calculator laskin, jota käytettään laskujen laskemiseen.
+     * @param calc laskulauseke
+     */
     public CalculationString(Calculator calculator, String calc) {
         this.calculator = calculator;
         
@@ -127,14 +136,26 @@ public abstract class CalculationString {
         return this.conversions;
     }
     
+    /**
+     * Lisää tapahtumankäsittelijän sille, kun lasku muttuu.
+     * @param e tapahtumankäsittelijä
+     */
     public void addCalculationChangeListener(CalculationStringChangeEvent e) {
         this.events.add(e);
     }
     
+    /**
+     * Lisää tapahtumankäsittelijän sille, kun laskun aiheuttama virhetila muuttuu.
+     * @param e tapahtumankäsittelijä
+     */
     public void addErrorStateChangeListener(CalculationStringErrorStateChangeEvent e) {
         this.onErrorChange.add(e);
     }
     
+    /**
+     * Lisää tapahtumankäsittelijän sille, kun lasku lasketaan.
+     * @param e tapahtumankäsittelijä
+     */
     public void addCalculationListener(CalculationStringCalculateEvent e) {
         this.onCalculate.add(e);
     }
@@ -199,7 +220,15 @@ public abstract class CalculationString {
         return this.selected;
     }
     
+    /**
+     * Kertoo lausekkeen pituuden.
+     * @return laskulausekkeen pituus
+     */
     abstract public int length();
+    
+    /**
+     * Tyhjentää lausekkeen.
+     */
     abstract public void clear();
     
     abstract public boolean insertAtCursor(String str);
@@ -207,8 +236,9 @@ public abstract class CalculationString {
     abstract public void eraseAtCursor();
     abstract public void eraseAtCursor(int n);
     abstract public void replaceWith(String str);
-    abstract public void convertAtCursor(String to);
+    abstract public void convertSelected(String to);
     abstract public void negateAtCursor();
+    abstract public void functionalizeSelected();
     @Override
     abstract public String toString();
 }

@@ -1,8 +1,8 @@
 package com.jarnoluu.laskin.exceptions;
 
 /**
- *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * Virheellisestö laskusta aihetuva poikkeus
+ * @author Jarno Luukkonen
  */
 public class LaskinParseException extends Exception {
     public LaskinParseException(String message) {

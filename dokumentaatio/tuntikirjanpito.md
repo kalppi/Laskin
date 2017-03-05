@@ -11,3 +11,4 @@ Päivä | Tunnit | Kuvaus
 07.02.2017 | 4h | Laskun graafisen esityksen miettimistä ja sen kanssa hifistelyä
 10.02.2017 | 2h | Koodin siistimistä
 24.02.2017 | 3h | Pientä viilailua, dokumentaation päivitystä.
+05.02.2017 | 3h | Viimeisitä viimeistelyjä

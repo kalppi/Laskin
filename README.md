@@ -4,6 +4,8 @@ Helppokäyttöinen ja käytännöllinen laskin.
 
 **Käyttöohje**
 
+Ohjelma käyttää javafx kirjastoa, joten se tarvitsee myös java 8 tuen.
+
 Syötä lauseke joko käyttäen näppäimistöä tai hiirellä nappeja painellen. Enter laskee laskun tuloksen. Nuolinäppäimillä voi vaihtaa valittua lausekkeen osaa.
 
 Mikäli valittuna on numero, voi sen muuntaa toiseen lukujärjestelmään näppäinyhdistelmiä painamalla.
@@ -17,6 +19,13 @@ Muita näppäinkomentoja ovat:
 - ctrl+v liittää leikepöydältä.
 - ctrl+c kopioi leikepöydälle.
 - ctrl+n muuntaa positiivisen luvun negatiiviseksi, ja päinvastoin.
+
+Laskuissa voi käyttää funktioita, joita on valmiina:
+- max (2 argumenttia)
+- abs (1 argumentti)
+- fib (1 argumentti)
+
+Omia funktioita voi käyttää luomalla samaan hakemistoon tiedoston "laskin.js", jonne funktioita voi kirjoittaa Javascriptillä.
 
 [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 

@@ -1,8 +1,8 @@
 package com.jarnoluu.laskin.exceptions;
 
 /**
- *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * Laskimelle väärien argumenttien antamisesta johtuva poikkeus
+ * @author Jarno Luukkonen
  */
 public class LaskinInvalidArgumentException extends Exception {
     public LaskinInvalidArgumentException(String message) {

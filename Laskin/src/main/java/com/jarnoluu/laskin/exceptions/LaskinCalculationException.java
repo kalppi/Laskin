@@ -1,8 +1,8 @@
 package com.jarnoluu.laskin.exceptions;
 
 /**
- *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * Laskemisessa tapahtuva poikkeus
+ * @author Jarno Luukkonen
  */
 public class LaskinCalculationException extends Exception {
     public LaskinCalculationException(String message) {

@@ -1,18 +1,15 @@
 package com.jarnoluu.laskin.ui;
 
 import com.jarnoluu.laskin.io.FileManager;
-import com.jarnoluu.laskin.logic.TokenCalculationString;
-import com.jarnoluu.laskin.logic.Calculator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.Clipboard;
 import javafx.stage.Stage;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class GUI extends Application implements UI {
     @Override

@@ -5,7 +5,7 @@ import javafx.scene.input.KeyEvent;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public interface IFancyLabelBehavior  {
     public void onKeyPressed(KeyEvent event);

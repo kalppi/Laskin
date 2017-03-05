@@ -8,7 +8,7 @@ import org.javatuples.Pair;
 
 /**
  * Luokka joka kuvaa laskulauseketta, jossa voidaan liikkua tokenista toiseen yhden merkin sijasta.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public final class TokenCalculationString extends CalculationString {
     /**
@@ -16,6 +16,10 @@ public final class TokenCalculationString extends CalculationString {
      */
     private int length = 0;
     
+    /**
+     * Konstruktori.
+     * @param calc laskemiseen käytettävä laskin.
+     */
     public TokenCalculationString(Calculator calc) {
         super(calc);
     }
@@ -56,7 +60,7 @@ public final class TokenCalculationString extends CalculationString {
      * Muuntaa kursorin kohdalla olevan numeron toiseen lukujärjestelmään.
      * @param to lukujärjestelmän nimi (bin/oct/hex/dec)
      */
-    public void convertAtCursor(String to) {
+    public void convertSelected(String to) {
         List<Pair<Function<String, Boolean>, Function<String, String>>> conv = this.getConversions().get(to);
         
         if (conv == null) {
@@ -228,6 +232,22 @@ public final class TokenCalculationString extends CalculationString {
         }
         
         return true;
+    }
+    
+    /**
+     * Lisää valitun kohdan ympärille funktiokutsun
+     */
+    public void functionalizeSelected() {
+        if (this.tokens.size() > 0) {
+            this.tokens.add(this.tokens.size() - 1 - this.cursor, new Token(Token.Type.EMPTY));
+            this.tokens.add(this.tokens.size() - 1 - this.cursor, new Token(Token.Type.BRACKET_START));
+            this.tokens.add(this.tokens.size() - 1 - this.cursor + 1, new Token(Token.Type.BRACKET_END));
+            
+            this.cursor += 3;
+            this.selected += 3;
+            
+            this.fireCalculationChangeEvent();
+        }
     }
     
     @Override

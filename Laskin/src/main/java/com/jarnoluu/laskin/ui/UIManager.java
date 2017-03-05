@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class UIManager {
     private static List<UI> uis = new ArrayList();

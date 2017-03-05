@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 /**
  * Luokka joka hoitaa tekstimuotoisen laskun muuttamisen tokeneiksi.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class Parser {
     private Parser() {
@@ -62,6 +62,12 @@ public class Parser {
         return input.replaceAll("\\s", "");
     }
     
+    /**
+     * Muuntaa laskulausekkeen listaksi tokeneja.
+     * @param input laskulauseke merkkijonona.
+     * @return kusta tokeneja
+     * @throws LaskinParseException 
+     */
     public static LinkedList<Token> tokenize(String input) throws LaskinParseException {
         return Parser.tokenize(input, true, false);
     }

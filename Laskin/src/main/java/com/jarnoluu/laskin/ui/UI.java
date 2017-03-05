@@ -2,7 +2,7 @@ package com.jarnoluu.laskin.ui;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public interface UI {
     void start();

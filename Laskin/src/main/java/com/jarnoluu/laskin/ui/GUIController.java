@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class GUIController {
     private CalculationString calc;
@@ -32,7 +32,7 @@ public class GUIController {
         try {
             this.calc = new TokenCalculationString(new Calculator());
         } catch (Exception e) {
-            e.printStackTrace();
+            
         }
         
         this.calc.addErrorStateChangeListener((state) -> {
@@ -87,6 +87,9 @@ public class GUIController {
                     break;
                 case "mod":
                     this.calc.insertAtCursor('%');
+                    break;
+                case "func":
+                    this.calc.functionalizeSelected();
                     break;
             }
         } else {

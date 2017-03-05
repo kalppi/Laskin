@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Apuluokka monessa paikassa tarvittaviin operaatioihin.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class Util {
     private final static List<Character> VALID = Arrays.asList('-', '+', '*', '/', '%', '^', '$', '(', ')', ',', '.');

@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class TokenCalculationStringTest {
     private CalculationString s;

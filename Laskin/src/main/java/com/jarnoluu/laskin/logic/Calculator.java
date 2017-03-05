@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * Luokka, joka hoitaa laskujen laskemisen.
- * @author Jarno Luukkonen <luukkonen.jarno@gmail.com>
+ * @author Jarno Luukkonen
  */
 public class Calculator {
     /**
@@ -27,11 +27,16 @@ public class Calculator {
      */
     private double lastValue = 0;
     
+    /**
+     * Konstruktori.
+     * @throws LaskinScriptException 
+     */
     public Calculator() throws LaskinScriptException {
-        this.scriptManager = new ScriptManager("JavaScript", "js/");
+        this.scriptManager = new ScriptManager("JavaScript");
         
-        this.scriptManager.loadScript("operators.js");
-        this.scriptManager.loadScript("functions.js");
+        this.scriptManager.loadResourceScript("js/operators.js");
+        this.scriptManager.loadResourceScript("js/functions.js");
+        this.scriptManager.loadLocalScript("./laskin.js");
         
         this.operators.put("+", "_plus");
         this.operators.put("-", "_minus");
