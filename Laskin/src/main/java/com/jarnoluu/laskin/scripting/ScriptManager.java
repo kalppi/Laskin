@@ -90,14 +90,11 @@ public class ScriptManager {
                 Pair.with(inv, argCount)
             );
         }
-        
-        System.out.println("Loaded file " + file);
     }
     
     public void loadLocalScript(String file) throws LaskinScriptException {
         try (InputStream stream = FileManager.openFileStream(file)) {
             if (stream == null) {
-                System.out.println("Could not load file " + file);
                 return;
             }
             
@@ -110,7 +107,6 @@ public class ScriptManager {
     public void loadResourceScript(String file) throws LaskinScriptException {
         try (InputStream stream = FileManager.openResourceFileStream(file)) {
             if (stream == null) {
-                System.out.println("Could not load file " + file);
                 return;
             }
             
